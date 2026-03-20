@@ -8,7 +8,7 @@ export function Hero() {
       {/* Background Decor */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px] -z-10" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/10 rounded-full blur-[128px] -z-10" />
-      
+
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
         <div className="space-y-8">
           <motion.div
@@ -17,19 +17,19 @@ export function Hero() {
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold uppercase tracking-wider"
           >
             <Sparkles size={14} />
-            Disponível para novos desafios
+            Aberto a oportunidades
           </motion.div>
-          
+
           <div className="space-y-4">
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
               className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.1]"
             >
-              Eu transformo <span className="bg-gradient-to-r from-primary via-purple-400 to-cyan-400 bg-clip-text text-transparent">ideias</span> em produtos digitais.
+              Desenvolvedor que gosta de tirar <span className="bg-gradient-to-r from-primary via-purple-400 to-cyan-400 bg-clip-text text-transparent">boas ideias</span> do papel.
             </motion.h1>
-            
+
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -40,24 +40,24 @@ export function Hero() {
             </motion.p>
           </div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
             className="flex flex-wrap gap-4"
           >
-            <a 
-              href="#projects" 
+            <a
+              href="#projects"
               className="px-8 py-4 rounded-full bg-primary text-primary-foreground font-bold flex items-center gap-2 group hover:shadow-[0_0_20px_rgba(170,59,255,0.4)] transition-all"
             >
-              Ver Projetos
+              Ver projetos
               <ArrowRight className="group-hover:translate-x-1 transition-transform" />
             </a>
-            <a 
-              href="#contact" 
+            <a
+              href="#contact"
               className="px-8 py-4 rounded-full bg-secondary border border-border text-foreground font-bold hover:bg-muted transition-colors"
             >
-              Entrar em contato
+              Falar comigo
             </a>
           </motion.div>
 
@@ -75,7 +75,7 @@ export function Hero() {
               ))}
             </div>
             <p className="text-sm text-muted-foreground">
-              <span className="text-foreground font-bold">+10 projetos</span> entregues com sucesso
+              <span className="text-foreground font-bold">+10 projetos</span> que marcaram minha trajetória
             </p>
           </motion.div>
         </div>
@@ -98,7 +98,7 @@ export function Hero() {
                 pedrogama.dev/system
               </div>
             </div>
-            
+
             <div className="space-y-6">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center text-primary">
@@ -109,7 +109,7 @@ export function Hero() {
                   <div className="h-2 w-1/3 bg-white/5 rounded-full" />
                 </div>
               </div>
-              
+
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-4 rounded-xl bg-white/5 border border-white/5 space-y-2">
                   <div className="h-2 w-1/2 bg-primary/30 rounded-full" />
@@ -125,7 +125,7 @@ export function Hero() {
 
               <div className="p-4 rounded-xl bg-primary/10 border border-primary/20">
                 <div className="flex justify-between items-center mb-4">
-                  <span className="text-xs font-semibold">Active Deployments</span>
+                  <span className="text-xs font-semibold">Projetos em andamento</span>
                   <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                 </div>
                 <div className="space-y-3">
@@ -142,7 +142,7 @@ export function Hero() {
             </div>
 
             {/* Floating elements for depth */}
-            <motion.div 
+            <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="absolute -top-6 -right-6 p-4 rounded-2xl bg-background border border-border shadow-xl flex items-center gap-3"
@@ -150,7 +150,7 @@ export function Hero() {
               <div className="w-8 h-8 rounded-lg bg-cyan-400/20 flex items-center justify-center text-cyan-400">
                 <Sparkles size={16} />
               </div>
-              <span className="text-xs font-bold">Premium UX</span>
+              <span className="text-xs font-bold">Código com cuidado</span>
             </motion.div>
           </div>
         </motion.div>

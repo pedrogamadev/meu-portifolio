@@ -7,12 +7,12 @@ export function ProductMindset() {
     <Section className="relative overflow-hidden">
       {/* Decorative Blur */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[160px] opacity-20 -z-10" />
-      
+
       <div className="text-center mb-16 space-y-4">
-        <h2 className="text-primary font-mono text-sm tracking-widest uppercase">Diferencial</h2>
-        <h3 className="text-4xl md:text-5xl font-bold tracking-tight">Visão de Produto & Negócio</h3>
+        <h2 className="text-primary font-mono text-sm tracking-widest uppercase">Como eu trabalho</h2>
+        <h3 className="text-4xl md:text-5xl font-bold tracking-tight">O que eu valorizo no desenvolvimento</h3>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Programar é apenas uma das ferramentas. Meu foco principal é entregar valor real através de tecnologia.
+          Mais do que entregar código, gosto de construir soluções bem cuidadas, que sejam agradáveis de usar e tranquilas de evoluir.
         </p>
       </div>
 

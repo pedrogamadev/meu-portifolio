@@ -14,10 +14,10 @@ export function About() {
             className="space-y-2"
           >
             <h2 className="text-primary font-mono text-sm tracking-widest uppercase">Quem sou</h2>
-            <h3 className="text-4xl font-bold tracking-tight">Desenvolvedor com <span className="text-primary italic">DNA</span> de produto.</h3>
+            <h3 className="text-4xl font-bold tracking-tight">Desenvolvedor movido por curiosidade, prática e evolução.</h3>
           </motion.div>
-          
-          <motion.p 
+
+          <motion.p
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -26,7 +26,7 @@ export function About() {
           >
             {personalInfo.about}
           </motion.p>
-          
+
           <motion.p
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -34,7 +34,7 @@ export function About() {
             transition={{ delay: 0.2 }}
             className="text-lg text-muted-foreground leading-relaxed"
           >
-            Minha abordagem vai além de apenas escrever código. Eu busco entender o valor do negócio, a dor do usuário e como transformar requisitos técnicos em uma experiência excepcional que performa e escala.
+            No dia a dia, gosto de trabalhar com clareza, colaboração e atenção aos detalhes. Para mim, desenvolver bem passa por entender o contexto, organizar a solução e construir algo que faça sentido tanto tecnicamente quanto para quem vai usar.
           </motion.p>
         </div>
 

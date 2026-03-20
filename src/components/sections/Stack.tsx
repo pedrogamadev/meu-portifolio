@@ -6,10 +6,10 @@ export function Stack() {
   return (
     <Section id="stack">
       <div className="text-center space-y-4 mb-20">
-        <h2 className="text-primary font-mono text-sm tracking-widest uppercase">Meu Arsenal</h2>
-        <h3 className="text-4xl md:text-5xl font-bold tracking-tight">Tecnologias que domino</h3>
+        <h2 className="text-primary font-mono text-sm tracking-widest uppercase">Stack</h2>
+        <h3 className="text-4xl md:text-5xl font-bold tracking-tight">Tecnologias com as quais eu trabalho</h3>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Utilizo as ferramentas mais modernas do ecossistema para criar aplicações robustas, rápidas e seguras.
+          Ferramentas que fazem parte do meu dia a dia no desenvolvimento de interfaces, APIs e aplicações web completas.
         </p>
       </div>
 
@@ -20,7 +20,7 @@ export function Stack() {
               <span className="w-8 h-px bg-primary/40" />
               {category.category}
             </h4>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {category.items.map((item, i) => (
                 <motion.div
@@ -32,9 +32,8 @@ export function Stack() {
                   whileHover={{ y: -5 }}
                   className="relative group p-6 rounded-2xl border border-white/5 bg-white/5 hover:border-primary/50 transition-all overflow-hidden"
                 >
-                  {/* Hover Glow Effect */}
                   <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity blur-xl rounded-full scale-150" />
-                  
+
                   <div className="relative z-10 flex flex-col items-center text-center gap-4">
                     <div className="w-12 h-12 rounded-xl bg-background flex items-center justify-center text-primary group-hover:text-primary-foreground group-hover:bg-primary transition-all duration-300">
                       <item.icon size={24} />

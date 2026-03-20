@@ -23,13 +23,13 @@ export function Header() {
   ]
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? 'bg-background/80 backdrop-blur-md border-b border-border py-4' : 'bg-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <motion.a 
+        <motion.a
           href="#"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -38,7 +38,6 @@ export function Header() {
           {personalInfo.name.split(' ').map(n => n[0]).join('')}.dev
         </motion.a>
 
-        {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link, i) => (
             <motion.a
@@ -58,12 +57,11 @@ export function Header() {
             animate={{ opacity: 1, scale: 1 }}
             className="px-5 py-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
           >
-            Vamos conversar
+            Falar comigo
           </motion.a>
         </nav>
 
-        {/* Mobile menu button */}
-        <button 
+        <button
           className="md:hidden text-foreground p-2"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
@@ -71,9 +69,8 @@ export function Header() {
         </button>
       </div>
 
-      {/* Mobile Nav */}
       {isMobileMenuOpen && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border p-6 flex flex-col gap-4 shadow-xl"
@@ -93,7 +90,7 @@ export function Header() {
             className="w-full py-3 rounded-lg bg-primary text-primary-foreground text-center font-semibold"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Vamos conversar
+            Falar comigo
           </a>
         </motion.div>
       )}
