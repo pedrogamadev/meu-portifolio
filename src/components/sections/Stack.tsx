@@ -35,8 +35,13 @@ export function Stack() {
                   <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity blur-xl rounded-full scale-150" />
 
                   <div className="relative z-10 flex flex-col items-center text-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-background flex items-center justify-center text-primary group-hover:text-primary-foreground group-hover:bg-primary transition-all duration-300">
-                      <item.icon size={24} />
+                    <div className="w-14 h-14 rounded-xl bg-background flex items-center justify-center transition-all duration-300 group-hover:bg-primary/10">
+                      <img
+                        src={item.logo}
+                        alt={`Logo ${item.name}`}
+                        className="w-8 h-8 object-contain"
+                        loading="lazy"
+                      />
                     </div>
                     <div>
                       <h5 className="font-bold text-foreground">{item.name}</h5>

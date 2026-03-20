@@ -1,16 +1,10 @@
 import {
-  Code2,
-  Database,
   Globe,
   LayoutTemplate,
-  Server,
-  Terminal,
   MonitorSmartphone,
   Zap,
   Layers,
-  Container,
-  GitBranch,
-  Cloud
+  Container
 } from 'lucide-react'
 
 export const personalInfo = {
@@ -34,26 +28,28 @@ export const stacks = [
   {
     category: "Front-end",
     items: [
-      { name: "React", icon: Code2, role: "Biblioteca de interface" },
-      { name: "TypeScript", icon: Terminal, role: "Tipagem forte" },
-      { name: "JavaScript", icon: Terminal, role: "Linguagem Base" },
-      { name: "Tailwind CSS", icon: LayoutTemplate, role: "Estilização utilitária" }
+      { name: "React", logo: "https://skillicons.dev/icons?i=react", role: "Biblioteca de interface" },
+      { name: "TypeScript", logo: "https://skillicons.dev/icons?i=ts", role: "Tipagem forte" },
+      { name: "JavaScript", logo: "https://skillicons.dev/icons?i=js", role: "Linguagem base" },
+      { name: "Tailwind CSS", logo: "https://skillicons.dev/icons?i=tailwind", role: "Estilização utilitária" }
     ]
   },
   {
     category: "Back-end & DB",
     items: [
-      { name: "Node.js", icon: Server, role: "Runtime backend" },
-      { name: "Prisma ORM", icon: Database, role: "Acesso a dados" },
-      { name: "PostgreSQL", icon: Database, role: "Banco de dados relacional" },
-      { name: "REST APIs", icon: Globe, role: "Integração e contratos" }
+      { name: "Node.js", logo: "https://skillicons.dev/icons?i=nodejs", role: "Runtime backend" },
+      { name: "Prisma ORM", logo: "https://skillicons.dev/icons?i=prisma", role: "Acesso a dados" },
+      { name: "PostgreSQL", logo: "https://skillicons.dev/icons?i=postgres", role: "Banco de dados relacional" },
+      { name: "Supabase", logo: "https://skillicons.dev/icons?i=supabase", role: "Backend e autenticação" },
+      { name: "REST APIs", logo: "https://skillicons.dev/icons?i=postman", role: "Integração e contratos" }
     ]
   },
   {
     category: "Ferramentas & Deploy",
     items: [
-      { name: "Git / GitHub", icon: GitBranch, role: "Controle de versão" },
-      { name: "Vercel", icon: Cloud, role: "Deploy e cloud" }
+      { name: "Git / GitHub", logo: "https://skillicons.dev/icons?i=git,github", role: "Controle de versão" },
+      { name: "Vercel", logo: "https://skillicons.dev/icons?i=vercel", role: "Deploy e cloud" },
+      { name: "Render", logo: "https://skillicons.dev/icons?i=render", role: "Hospedagem de serviços" }
     ]
   }
 ]
