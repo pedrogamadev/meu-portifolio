@@ -40,16 +40,16 @@ export const stacks = [
       { name: "Node.js", logo: "https://skillicons.dev/icons?i=nodejs", role: "Runtime backend" },
       { name: "Prisma ORM", logo: "https://skillicons.dev/icons?i=prisma", role: "Acesso a dados" },
       { name: "PostgreSQL", logo: "https://skillicons.dev/icons?i=postgres", role: "Banco de dados relacional" },
-      { name: "Supabase", logo: "https://skillicons.dev/icons?i=supabase", role: "Backend e autenticação" },
       { name: "REST APIs", logo: "https://skillicons.dev/icons?i=postman", role: "Integração e contratos" }
     ]
   },
   {
     category: "Ferramentas & Deploy",
     items: [
-      { name: "Git / GitHub", logo: "https://skillicons.dev/icons?i=git,github", role: "Controle de versão" },
+      { name: "Git", logo: "https://skillicons.dev/icons?i=git", role: "Versionamento local" },
+      { name: "GitHub", logo: "https://skillicons.dev/icons?i=github", role: "Colaboração e repositórios" },
       { name: "Vercel", logo: "https://skillicons.dev/icons?i=vercel", role: "Deploy e cloud" },
-      { name: "Render", logo: "https://skillicons.dev/icons?i=render", role: "Hospedagem de serviços" }
+      { name: "Render", logo: "/render-white.svg", role: "Hospedagem de serviços" }
     ]
   }
 ]
