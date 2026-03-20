@@ -12,9 +12,11 @@ export const personalInfo = {
   role: "Full Stack Developer",
   shortBio: "Desenvolvedor full stack que gosta de criar aplicações web bem pensadas, com código organizado e experiências claras para quem usa.",
   about: "Sou um desenvolvedor full stack que gosta de transformar ideias em interfaces e sistemas funcionais. Tenho interesse especial por aplicações web modernas, boas práticas de desenvolvimento e soluções que sejam simples de entender, manter e evoluir.",
-  email: "contato@pedrogama.dev", // mock
+  email: "pedrohumbertody@gmail.com",
   github: "https://github.com/pedrogamadev",
-  linkedin: "https://linkedin.com/in/pedrogamadev"
+  linkedin: "https://www.linkedin.com/in/pedro-humberto-59719429a",
+  whatsapp: "https://wa.me/5584991926432",
+  instagram: "https://instagram.com/pedro_humbertoo"
 }
 
 export const highlights = [

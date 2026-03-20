@@ -2,7 +2,7 @@ import { personalInfo } from '@/data'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
-  
+
   return (
     <footer className="py-12 px-6 border-t border-white/5">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
@@ -17,8 +17,9 @@ export function Footer() {
 
         <div className="flex items-center gap-8 text-sm font-medium text-muted-foreground">
           <a href="#" className="hover:text-primary transition-colors">Voltar ao topo</a>
-          <a href={personalInfo.github} className="hover:text-primary transition-colors">GitHub</a>
-          <a href={personalInfo.linkedin} className="hover:text-primary transition-colors">LinkedIn</a>
+          <a href={personalInfo.github} target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">GitHub</a>
+          <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">LinkedIn</a>
+          <a href={`mailto:${personalInfo.email}`} className="hover:text-primary transition-colors">Email</a>
         </div>
       </div>
     </footer>
