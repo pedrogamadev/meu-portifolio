@@ -28,23 +28,27 @@ export function Projects() {
             <div className="flex-1 w-full relative group">
               <div className={`absolute inset-0 bg-gradient-to-br ${project.color} rounded-3xl blur-2xl opacity-50 group-hover:opacity-100 transition-opacity`} />
               <div className="relative aspect-[16/10] bg-white/5 rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
-                <div className="absolute inset-4 rounded-xl bg-[#0a0a0a] border border-white/5 p-6 flex flex-col gap-4">
-                  <div className="flex gap-1.5">
-                    <div className="w-2 h-2 rounded-full bg-white/20" />
-                    <div className="w-16 h-2 rounded-full bg-white/10" />
+                {project.image ? (
+                  <img src={project.image} alt={`Capa do projeto ${project.title}`} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                ) : (
+                  <div className="absolute inset-4 rounded-xl bg-[#0a0a0a] border border-white/5 p-6 flex flex-col gap-4">
+                    <div className="flex gap-1.5">
+                      <div className="w-2 h-2 rounded-full bg-white/20" />
+                      <div className="w-16 h-2 rounded-full bg-white/10" />
+                    </div>
+                    <div className="flex-1 flex items-center justify-center">
+                      <span className="text-2xl font-bold font-mono opacity-20 select-none tracking-tighter uppercase transform -rotate-12 text-center">{project.title}</span>
+                    </div>
+                    <div className="grid grid-cols-3 gap-2">
+                      <div className="h-24 rounded-lg bg-white/[0.03]" />
+                      <div className="h-24 rounded-lg bg-white/[0.03]" />
+                      <div className="h-24 rounded-lg bg-white/[0.05]" />
+                    </div>
                   </div>
-                  <div className="flex-1 flex items-center justify-center">
-                    <span className="text-2xl font-bold font-mono opacity-20 select-none tracking-tighter uppercase transform -rotate-12">{project.title}</span>
-                  </div>
-                  <div className="grid grid-cols-3 gap-2">
-                    <div className="h-24 rounded-lg bg-white/[0.03]" />
-                    <div className="h-24 rounded-lg bg-white/[0.03]" />
-                    <div className="h-24 rounded-lg bg-white/[0.05]" />
-                  </div>
-                </div>
+                )}
 
                 <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <a href="#" className="p-4 rounded-full bg-background border border-border shadow-xl transform scale-75 group-hover:scale-100 transition-transform font-bold flex items-center gap-2">
+                  <a href={project.url || "#"} target={project.url ? "_blank" : undefined} rel={project.url ? "noopener noreferrer" : undefined} className="p-4 rounded-full bg-background border border-border shadow-xl transform scale-75 group-hover:scale-100 transition-transform font-bold flex items-center gap-2">
                     Ver projeto <ChevronRight size={18} />
                   </a>
                 </div>
@@ -70,14 +74,18 @@ export function Projects() {
               </div>
 
               <div className="flex items-center gap-6 pt-4 border-t border-white/5">
-                <a href="#" className="flex items-center gap-2 text-foreground font-semibold hover:text-primary transition-colors">
-                  <ExternalLink size={18} />
-                  Ver demo
-                </a>
-                <a href="#" className="flex items-center gap-2 text-foreground font-semibold hover:text-primary transition-colors">
-                  <Github size={18} />
-                  Código-fonte
-                </a>
+                {project.url && (
+                  <a href={project.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-foreground font-semibold hover:text-primary transition-colors">
+                    <ExternalLink size={18} />
+                    Ver demo
+                  </a>
+                )}
+                {project.github && (
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-foreground font-semibold hover:text-primary transition-colors">
+                    <Github size={18} />
+                    Código-fonte
+                  </a>
+                )}
               </div>
             </div>
           </motion.div>

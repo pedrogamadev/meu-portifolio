@@ -7,6 +7,9 @@ import {
   Container
 } from 'lucide-react'
 
+import catalogoImg from '@/assets/projetos/catalogo.png'
+import curriculoImg from '@/assets/projetos/curriculo.png'
+
 export const personalInfo = {
   name: "Pedro Humberto Gama de Medeiros",
   role: "Full Stack Developer",
@@ -58,31 +61,34 @@ export const stacks = [
 
 export const projects = [
   {
-    id: "agendunas",
-    title: "AgenDunas",
-    context: "Plataforma de agendamento de trilhas",
-    description: "Sistema desenvolvido para apoiar o agendamento de trilhas no Parque das Dunas, com controle de disponibilidade, reservas, trilhas e condutores. Foi um projeto importante para trabalhar integração entre front-end, regras de negócio e organização de dados.",
+    id: "catalogofacil",
+    title: "Catálogo Fácil",
+    context: "SaaS de catálogo B2B",
+    description: "SaaS de catálogo B2B que permite cadastrar produtos e personalizar o próprio cardápio sem necessidade de desenvolvimento.",
     tags: ["React", "TypeScript", "Node.js", "Prisma", "PostgreSQL"],
-    image: "/mock-agendunas.webp", // Will mock with CSS if needed
-    color: "from-green-500/20 to-emerald-900/40"
+    image: catalogoImg,
+    color: "from-green-500/20 to-emerald-900/40",
+    url: "https://www.catalogofacil.shop/"
   },
   {
-    id: "studiosyllgama",
-    title: "Studio Syll Gama",
-    context: "Plataforma Institucional e Educacional",
-    description: "Projeto com foco em apresentar a proposta da marca e organizar informações sobre cursos presenciais e online. Aqui trabalhei principalmente a estrutura da interface, clareza de navegação e experiência de uso.",
+    id: "supinoapp",
+    title: "Supino App",
+    context: "SaaS para Personal Trainers e Alunos",
+    description: "Plataforma focada em intermediar a relação entre professor e aluno para o cadastro e acompanhamento de treinos (em desenvolvimento).",
     tags: ["React", "Tailwind CSS", "TypeScript", "Vite"],
-    image: "/mock-syllgama.webp",
-    color: "from-purple-500/20 to-violet-900/40"
+    color: "from-purple-500/20 to-violet-900/40",
+    url: "https://supino-app.vercel.app/"
   },
   {
     id: "curriculoclaro",
     title: "Currículo Claro",
     context: "SaaS de Gerador de Currículos",
-    description: "Aplicação web para criação de currículos com formulários dinâmicos, visualização em tempo real e geração de PDF no client-side. Foi um projeto que exigiu bastante cuidado com usabilidade e organização de estado na interface.",
+    description: "Sistema simples sem servidor que faz perguntas objetivas ao usuário para criar um currículo já formatado, sem imagens (ATS-friendly) para passar melhor nas triagens automatizadas, focando na clareza e objetividade.",
     tags: ["React", "TypeScript", "Shadcn/UI", "Tailwind CSS"],
-    image: "/mock-curriculo.webp",
-    color: "from-blue-500/20 to-cyan-900/40"
+    image: curriculoImg,
+    color: "from-blue-500/20 to-cyan-900/40",
+    url: "https://curriculo-claro.vercel.app/",
+    github: "https://github.com/pedrogamadev/Curriculo-Claro.git"
   }
 ]
 
