@@ -92,18 +92,49 @@ export const projects = [
   }
 ]
 
-export const experience = [
+export type ExperienceType = "current" | "parallel" | "business" | "previous"
+
+export interface Experience {
+  id: number
+  type: ExperienceType
+  role: string
+  company: string
+  period: string
+  description: string
+}
+
+export const experience: Experience[] = [
   {
     id: 1,
-    year: "Atual",
-    title: "Desenvolvedor Full Stack Independente",
-    description: "Atuando no desenvolvimento de aplicações web completas, participando desde a definição da estrutura até a implementação de interfaces, APIs, banco de dados e deploy."
+    type: "current",
+    role: "Desenvolvedor Full Stack Estagiário",
+    company: "SEEC",
+    period: "Set/2025 — Atual",
+    description: "Atuação no desenvolvimento e manutenção de sistemas web internos. Trabalho diariamente com construção de interfaces, integração e estruturação de APIs, modelagem de banco de dados e criação de dashboards, garantindo correções e melhorias contínuas nas demandas da secretaria."
   },
   {
     id: 2,
-    year: "Anterior",
-    title: "Desenvolvedor de Software",
-    description: "Experiência com desenvolvimento e manutenção de sistemas, criação de APIs REST, modelagem de banco de dados e construção de interfaces reativas."
+    type: "parallel",
+    role: "Freelancer em Desenvolvimento Web",
+    company: "Atuação Independente",
+    period: "2025 — Atual",
+    description: "Criação de landing pages, portfólios, sistemas web e soluções customizadas sob demanda para clientes. Foco em arquitetar o projeto do zero ao deploy, entregando código organizado e interfaces funcionais."
+  },
+  {
+    id: 3,
+    type: "business",
+    role: "Fundador / Gestor",
+    company: "Loja Própria de Suplementos",
+    period: "Duração de ~1 ano",
+    description: "Responsável integral pela gestão, operação e vendas do negócio. Essa vivência empreendedora desenvolveu uma forte visão pragmática sobre o que realmente importa em um produto e como organizar rotinas comerciais eficientes."
+  },
+  {
+    id: 4,
+    type: "previous",
+    role: "Vendedor",
+    company: "Seu Natural",
+    period: "Até Fev/2025",
+    description: "Atuação direta na linha de frente do atendimento ao público e rotina comercial. Experiência fundamental para o desenvolvimento de comunicação clara, negociação e agilidade na resolução de problemas reais de clientes."
   }
 ]
 
