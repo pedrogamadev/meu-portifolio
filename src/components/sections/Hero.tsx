@@ -16,7 +16,7 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 className="font-mono text-xs tracking-widest text-muted-foreground uppercase"
               >
-                A · Editorial Tech
+                Fullstack web Developer
               </motion.div>
 
               <motion.h1
@@ -34,7 +34,7 @@ export function Hero() {
                 transition={{ delay: 0.2 }}
                 className="text-2xl md:text-3xl font-serif italic text-muted-foreground leading-relaxed"
               >
-                Constrói sistemas web com calma, intenção e código que envelhece bem.
+                React, Node.js e TypeScript construindo SaaS escaláveis e prontos para produção
               </motion.p>
 
               {/* Imagem Mobile */}
@@ -60,7 +60,7 @@ export function Hero() {
                 transition={{ delay: 0.3 }}
                 className="font-mono text-xs text-muted-foreground tracking-wide flex flex-wrap items-center gap-2 md:gap-3"
               >
-                <span>São Paulo, BR</span>
+                <span>Natal, RN</span>
                 <span>·</span>
                 <span>aberto a oportunidades</span>
               </motion.div>
