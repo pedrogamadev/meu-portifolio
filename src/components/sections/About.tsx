@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion'
-import { personalInfo, highlights } from '@/data'
+import { portfolioData } from '@/data'
 import { Section } from '../layout/Section'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 export function About() {
+  const { language } = useLanguage()
+  const { personalInfo, highlights } = portfolioData[language]
   return (
     <Section id="about" className="relative border-t border-border/30">
       <div className="grid md:grid-cols-2 gap-16 items-start">
@@ -13,9 +16,15 @@ export function About() {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <h2 className="font-mono text-xs tracking-widest uppercase text-muted-foreground">Quem sou</h2>
+            <h2 className="font-mono text-xs tracking-widest uppercase text-muted-foreground">
+              {language === 'pt' ? 'Quem sou' : 'About me'}
+            </h2>
             <h3 className="text-4xl font-serif tracking-tight leading-tight">
-              Desenvolvedor movido por <span className="italic">curiosidade</span>, prática e evolução.
+              {language === 'pt' ? (
+                <>Desenvolvedor movido por <span className="italic">curiosidade</span>, prática e evolução.</>
+              ) : (
+                <>Developer driven by <span className="italic">curiosity</span>, practice, and evolution.</>
+              )}
             </h3>
           </motion.div>
 
@@ -36,7 +45,10 @@ export function About() {
             transition={{ delay: 0.2 }}
             className="text-lg font-serif text-muted-foreground leading-relaxed"
           >
-            No dia a dia, gosto de trabalhar com clareza, colaboração e atenção aos detalhes. Para mim, desenvolver bem passa por entender o contexto, organizar a solução e construir algo que faça sentido tanto tecnicamente quanto para quem vai usar.
+            {language === 'pt' ? 
+              'No dia a dia, gosto de trabalhar com clareza, colaboração e atenção aos detalhes. Para mim, desenvolver bem passa por entender o contexto, organizar a solução e construir algo que faça sentido tanto tecnicamente quanto para quem vai usar.' : 
+              'On a daily basis, I like to work with clarity, collaboration, and attention to detail. For me, developing well involves understanding the context, organizing the solution, and building something that makes sense both technically and for the end user.'
+            }
           </motion.p>
         </div>
 

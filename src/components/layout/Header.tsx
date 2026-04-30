@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const { language, toggleLanguage, t } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,10 +17,10 @@ export function Header() {
   }, [])
 
   const navLinks = [
-    { name: 'Sobre', href: '#about' },
-    { name: 'Stack', href: '#stack' },
-    { name: 'Projetos', href: '#projects' },
-    { name: 'Contato', href: '#contact' },
+    { name: t('nav.about'), href: '#about' },
+    { name: t('nav.stack'), href: '#stack' },
+    { name: t('nav.projects'), href: '#projects' },
+    { name: t('nav.contact'), href: '#contact' },
   ]
 
   return (
@@ -50,13 +52,19 @@ export function Header() {
               {link.name}
             </motion.a>
           ))}
+          <button 
+            onClick={toggleLanguage}
+            className="text-xs font-mono tracking-widest text-muted-foreground hover:text-foreground transition-colors px-2 py-1 rounded border border-white/5 bg-white/5"
+          >
+            {language === 'pt' ? 'EN' : 'PT'}
+          </button>
           <motion.a
             href="#contact"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             className="px-4 py-2 border border-primary text-primary text-xs font-mono uppercase tracking-widest hover:bg-primary hover:text-primary-foreground transition-colors"
           >
-            Falar comigo
+            {t('nav.talk')}
           </motion.a>
         </nav>
 
@@ -84,12 +92,18 @@ export function Header() {
               {link.name}
             </a>
           ))}
+          <button 
+            onClick={toggleLanguage}
+            className="w-full py-3 mt-4 border border-border/50 text-muted-foreground text-center text-xs font-mono uppercase tracking-widest transition-colors"
+          >
+            {language === 'pt' ? 'Switch to English' : 'Mudar para Português'}
+          </button>
           <a
             href="#contact"
-            className="w-full py-3 mt-4 border border-primary text-primary text-center text-xs font-mono uppercase tracking-widest hover:bg-primary hover:text-primary-foreground transition-colors"
+            className="w-full py-3 mt-2 border border-primary text-primary text-center text-xs font-mono uppercase tracking-widest hover:bg-primary hover:text-primary-foreground transition-colors"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Falar comigo
+            {t('nav.talk')}
           </a>
         </motion.div>
       )}

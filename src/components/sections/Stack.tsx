@@ -1,15 +1,22 @@
 import { motion } from 'framer-motion'
-import { stacks } from '@/data'
+import { portfolioData } from '@/data'
 import { Section } from '../layout/Section'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 export function Stack() {
+  const { language } = useLanguage()
+  const { stacks } = portfolioData[language]
   return (
     <Section id="stack">
       <div className="text-center space-y-4 mb-20">
         <h2 className="text-primary font-mono text-sm tracking-widest uppercase">Stack</h2>
-        <h3 className="text-4xl md:text-5xl font-bold tracking-tight">Tecnologias com as quais eu trabalho</h3>
+        <h3 className="text-4xl md:text-5xl font-bold tracking-tight">
+          {language === 'pt' ? 'Tecnologias com as quais eu trabalho' : 'Technologies I work with'}
+        </h3>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Ferramentas que fazem parte do meu dia a dia no desenvolvimento de interfaces, APIs e aplicações web completas.
+          {language === 'pt' ? 
+            'Ferramentas que fazem parte do meu dia a dia no desenvolvimento de interfaces, APIs e aplicações web completas.' : 
+            'Tools that are part of my daily routine in developing interfaces, APIs, and complete web applications.'}
         </p>
       </div>
 

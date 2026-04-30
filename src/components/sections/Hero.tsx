@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import perfilImg from '@/assets/perfil.png'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 export function Hero() {
+  const { t } = useLanguage()
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 w-full">
@@ -16,7 +18,7 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 className="font-mono text-xs tracking-widest text-muted-foreground uppercase"
               >
-                Fullstack web Developer
+                {t('hero.label')}
               </motion.div>
 
               <motion.h1
@@ -34,7 +36,7 @@ export function Hero() {
                 transition={{ delay: 0.2 }}
                 className="text-2xl md:text-3xl font-serif italic text-muted-foreground leading-relaxed"
               >
-                React, Node.js e TypeScript construindo SaaS escaláveis e prontos para produção
+                {t('hero.subtitle')}
               </motion.p>
 
               {/* Imagem Mobile */}
@@ -60,9 +62,9 @@ export function Hero() {
                 transition={{ delay: 0.3 }}
                 className="font-mono text-xs text-muted-foreground tracking-wide flex flex-wrap items-center gap-2 md:gap-3"
               >
-                <span>Natal, RN</span>
+                <span>{t('hero.location')}</span>
                 <span>·</span>
-                <span>aberto a oportunidades</span>
+                <span>{t('hero.available')}</span>
               </motion.div>
             </div>
 
@@ -77,13 +79,13 @@ export function Hero() {
                 className="px-6 py-3 rounded-full border border-primary text-primary font-mono text-xs uppercase tracking-widest hover:bg-primary hover:text-primary-foreground transition-colors flex items-center gap-2 group"
               >
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                Ver projetos
+                {t('hero.viewProjects')}
               </a>
               <a
                 href="#contact"
                 className="font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
               >
-                Conversar
+                {t('hero.chat')}
               </a>
             </motion.div>
           </div>

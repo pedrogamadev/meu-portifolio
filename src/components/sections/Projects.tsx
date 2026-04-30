@@ -1,18 +1,27 @@
 import { motion } from 'framer-motion'
-import { projects } from '@/data'
+import { portfolioData } from '@/data'
 import { Section } from '../layout/Section'
 import { ExternalLink, Github, ChevronRight } from 'lucide-react'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 export function Projects() {
+  const { language } = useLanguage()
+  const { projects } = portfolioData[language]
   return (
     <Section id="projects">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
         <div className="space-y-4">
-          <h2 className="text-primary font-mono text-sm tracking-widest uppercase">Projetos</h2>
-          <h3 className="text-4xl md:text-5xl font-bold tracking-tight">Alguns trabalhos em destaque</h3>
+          <h2 className="text-primary font-mono text-sm tracking-widest uppercase">
+            {language === 'pt' ? 'Projetos' : 'Projects'}
+          </h2>
+          <h3 className="text-4xl md:text-5xl font-bold tracking-tight">
+            {language === 'pt' ? 'Alguns trabalhos em destaque' : 'Some featured works'}
+          </h3>
         </div>
         <p className="text-muted-foreground max-w-md">
-          Uma seleção de projetos que ajudam a mostrar como penso, quais tecnologias utilizo e que tipo de problema gosto de resolver.
+          {language === 'pt' ? 
+            'Uma seleção de projetos que ajudam a mostrar como penso, quais tecnologias utilizo e que tipo de problema gosto de resolver.' : 
+            'A selection of projects that help show how I think, which technologies I use, and what kind of problems I like to solve.'}
         </p>
       </div>
 
@@ -49,7 +58,7 @@ export function Projects() {
 
                 <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <a href={project.url || "#"} target={project.url ? "_blank" : undefined} rel={project.url ? "noopener noreferrer" : undefined} className="p-4 rounded-full bg-background border border-border shadow-xl transform scale-75 group-hover:scale-100 transition-transform font-bold flex items-center gap-2">
-                    Ver projeto <ChevronRight size={18} />
+                    {language === 'pt' ? 'Ver projeto' : 'View project'} <ChevronRight size={18} />
                   </a>
                 </div>
               </div>
@@ -77,13 +86,13 @@ export function Projects() {
                 {project.url && (
                   <a href={project.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-foreground font-semibold hover:text-primary transition-colors">
                     <ExternalLink size={18} />
-                    Ver demo
+                    {language === 'pt' ? 'Ver demo' : 'View demo'}
                   </a>
                 )}
                 {project.github && (
                   <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-foreground font-semibold hover:text-primary transition-colors">
                     <Github size={18} />
-                    Código-fonte
+                    {language === 'pt' ? 'Código-fonte' : 'Source code'}
                   </a>
                 )}
               </div>

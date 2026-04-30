@@ -1,18 +1,27 @@
 import { motion } from 'framer-motion'
-import { productMindset } from '@/data'
+import { portfolioData } from '@/data'
 import { Section } from '../layout/Section'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 export function ProductMindset() {
+  const { language } = useLanguage()
+  const { productMindset } = portfolioData[language]
   return (
     <Section className="relative overflow-hidden">
       {/* Decorative Blur */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[160px] opacity-20 -z-10" />
 
       <div className="text-center mb-16 space-y-4">
-        <h2 className="text-primary font-mono text-sm tracking-widest uppercase">Como eu trabalho</h2>
-        <h3 className="text-4xl md:text-5xl font-bold tracking-tight">O que eu valorizo no desenvolvimento</h3>
+        <h2 className="text-primary font-mono text-sm tracking-widest uppercase">
+          {language === 'pt' ? 'Como eu trabalho' : 'How I work'}
+        </h2>
+        <h3 className="text-4xl md:text-5xl font-bold tracking-tight">
+          {language === 'pt' ? 'O que eu valorizo no desenvolvimento' : 'What I value in development'}
+        </h3>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          Mais do que entregar código, gosto de construir soluções bem cuidadas, que sejam agradáveis de usar e tranquilas de evoluir.
+          {language === 'pt' ? 
+            'Mais do que entregar código, gosto de construir soluções bem cuidadas, que sejam agradáveis de usar e tranquilas de evoluir.' : 
+            'More than just delivering code, I like to build well-crafted solutions that are pleasant to use and easy to evolve.'}
         </p>
       </div>
 

@@ -1,48 +1,59 @@
 import { motion } from 'framer-motion'
-import { experience, type ExperienceType } from '@/data'
+import { portfolioData } from '@/data'
+import type { ExperienceType } from '@/data/pt'
 import { Section } from '../layout/Section'
 import { Calendar } from 'lucide-react'
+import { useLanguage } from '../../contexts/LanguageContext'
 
-const typeDetails: Record<ExperienceType, { badge: string; dot: string; dotBorder: string; title: string; label: string }> = {
+const typeDetails: Record<ExperienceType, { badge: string; dot: string; dotBorder: string; title: string; label: { pt: string, en: string } }> = {
   current: {
     badge: "bg-primary/20 text-primary border-primary/30",
     dot: "bg-primary shadow-sm shadow-primary/50",
     dotBorder: "border-primary/40 group-hover:border-primary",
     title: "text-foreground group-hover:text-primary",
-    label: "ATUAL"
+    label: { pt: "ATUAL", en: "CURRENT" }
   },
   parallel: {
     badge: "bg-blue-500/10 text-blue-400 border-blue-500/20",
     dot: "bg-blue-400",
     dotBorder: "border-blue-500/20 group-hover:border-blue-400/50",
     title: "text-foreground group-hover:text-blue-400",
-    label: "PARALELO"
+    label: { pt: "PARALELO", en: "PARALLEL" }
   },
   business: {
     badge: "bg-purple-500/10 text-purple-400 border-purple-500/20",
     dot: "bg-purple-400",
     dotBorder: "border-purple-500/20 group-hover:border-purple-400/50",
     title: "text-foreground group-hover:text-purple-400",
-    label: "NEGÓCIO PRÓPRIO"
+    label: { pt: "NEGÓCIO PRÓPRIO", en: "OWN BUSINESS" }
   },
   previous: {
     badge: "bg-white/5 text-muted-foreground border-white/10",
     dot: "bg-muted-foreground/50",
     dotBorder: "border-white/10 group-hover:border-white/20",
     title: "text-muted-foreground group-hover:text-foreground",
-    label: "ANTERIOR"
+    label: { pt: "ANTERIOR", en: "PREVIOUS" }
   }
 }
 
 export function Experience() {
+  const { language } = useLanguage()
+  const { experience } = portfolioData[language]
+
   return (
     <Section id="experience">
       <div className="grid md:grid-cols-[1fr_2fr] gap-12 items-start">
         <div className="space-y-6 md:sticky md:top-24">
-          <h2 className="text-primary font-mono text-sm tracking-widest uppercase">Experiência</h2>
-          <h3 className="text-4xl font-bold tracking-tight">Jornada profissional</h3>
+          <h2 className="text-primary font-mono text-sm tracking-widest uppercase">
+            {language === 'pt' ? 'Experiência' : 'Experience'}
+          </h2>
+          <h3 className="text-4xl font-bold tracking-tight">
+            {language === 'pt' ? 'Jornada profissional' : 'Professional journey'}
+          </h3>
           <p className="text-muted-foreground">
-            Uma trajetória que combina vivência em operação comercial, gestão de negócio próprio, execução de projetos independentes e atuação técnica dedicada ao desenvolvimento de software.
+            {language === 'pt' ? 
+              'Uma trajetória que combina vivência em operação comercial, gestão de negócio próprio, execução de projetos independentes e atuação técnica dedicada ao desenvolvimento de software.' : 
+              'A journey that combines experience in commercial operations, business management, independent projects execution, and technical dedication to software development.'}
           </p>
         </div>
 
@@ -66,7 +77,7 @@ export function Experience() {
                 <div className="space-y-3 p-5 -ml-4 md:-ml-5 rounded-2xl transition-colors duration-300 hover:bg-white/[0.02] border border-transparent hover:border-white/5">
                   <div className="flex flex-wrap items-center gap-3">
                     <span className={`inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border ${styles.badge}`}>
-                      {styles.label}
+                      {styles.label[language]}
                     </span>
                     <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground font-medium">
                       <Calendar size={12} />

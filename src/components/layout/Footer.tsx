@@ -1,7 +1,10 @@
-import { personalInfo } from '@/data'
+import { portfolioData } from '@/data'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
+  const { language } = useLanguage()
+  const { personalInfo } = portfolioData[language]
 
   return (
     <footer className="py-12 px-6 border-t border-white/5">
@@ -11,12 +14,12 @@ export function Footer() {
             {personalInfo.name.split(' ').map(n => n[0]).join('')}.dev
           </p>
           <p className="text-sm text-muted-foreground">
-            © {currentYear} Todos os direitos reservados.
+            © {currentYear} {language === 'pt' ? 'Todos os direitos reservados.' : 'All rights reserved.'}
           </p>
         </div>
 
         <div className="flex items-center gap-8 text-sm font-medium text-muted-foreground">
-          <a href="#" className="hover:text-primary transition-colors">Voltar ao topo</a>
+          <a href="#" className="hover:text-primary transition-colors">{language === 'pt' ? 'Voltar ao topo' : 'Back to top'}</a>
           <a href={personalInfo.github} target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">GitHub</a>
           <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="hover:text-primary transition-colors">LinkedIn</a>
           <a href={`mailto:${personalInfo.email}`} className="hover:text-primary transition-colors">Email</a>
