@@ -6,7 +6,7 @@ export const personalInfo = {
   name: "Pedro Humberto Gama de Medeiros",
   role: "Full Stack Developer",
   shortBio: "Desenvolvedor full stack que gosta de criar aplicações web bem pensadas, com código organizado e experiências claras para quem usa.",
-  about: "Sou um desenvolvedor full stack que gosta de transformar ideias em interfaces e sistemas funcionais. Tenho interesse especial por aplicações web modernas, boas práticas de desenvolvimento e soluções que sejam simples de entender, manter e evoluir.",
+  about: "Sou Pedro Gama, desenvolvedor full stack em Natal/RN, com foco em aplicações web modernas usando React, TypeScript, Node.js, Prisma e PostgreSQL.\n\nGosto de atuar além da tela: entender a regra de negócio, estruturar o banco de dados, construir APIs, cuidar da experiência do usuário e entregar soluções simples de manter, performáticas e prontas para produção.",
   email: "pedrohumbertody@gmail.com",
   github: "https://github.com/pedrogamadev",
   linkedin: "https://www.linkedin.com/in/pedro-humberto-59719429a",

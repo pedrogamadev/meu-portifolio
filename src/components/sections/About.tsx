@@ -33,7 +33,7 @@ export function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-lg font-serif text-muted-foreground leading-relaxed"
+            className="text-lg font-serif text-muted-foreground leading-relaxed whitespace-pre-wrap"
           >
             {personalInfo.about}
           </motion.p>
@@ -46,8 +46,8 @@ export function About() {
             className="text-lg font-serif text-muted-foreground leading-relaxed"
           >
             {language === 'pt' ? 
-              'No dia a dia, gosto de trabalhar com clareza, colaboração e atenção aos detalhes. Para mim, desenvolver bem passa por entender o contexto, organizar a solução e construir algo que faça sentido tanto tecnicamente quanto para quem vai usar.' : 
-              'On a daily basis, I like to work with clarity, collaboration, and attention to detail. For me, developing well involves understanding the context, organizing the solution, and building something that makes sense both technically and for the end user.'
+              'Tenho experiência com sistemas SaaS, dashboards administrativos, catálogos digitais, landing pages e plataformas com múltiplos perfis de usuário. Meu foco é construir produtos funcionais, bem organizados e com boa experiência para quem usa e para quem mantém.' : 
+              'I have experience with SaaS systems, administrative dashboards, digital catalogs, landing pages, and platforms with multiple user profiles. My focus is on building functional, well-organized products that provide a good experience for those who use them and those who maintain them.'
             }
           </motion.p>
         </div>
