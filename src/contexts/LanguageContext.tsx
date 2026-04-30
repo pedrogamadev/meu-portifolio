@@ -19,6 +19,7 @@ const translations = {
     'hero.subtitle': 'React, Node.js e TypeScript construindo SaaS escaláveis e prontos para produção',
     'hero.location': 'Natal, RN',
     'hero.available': 'aberto a oportunidades',
+    'hero.languages': 'Língua nativa: português e inglês técnico',
     'hero.viewProjects': 'Ver projetos',
     'hero.chat': 'Conversar',
   },
@@ -32,6 +33,7 @@ const translations = {
     'hero.subtitle': 'React, Node.js, and TypeScript building scalable and production-ready SaaS',
     'hero.location': 'Natal, RN (Brazil)',
     'hero.available': 'open to work',
+    'hero.languages': 'Native language: Portuguese and technical English',
     'hero.viewProjects': 'View projects',
     'hero.chat': 'Chat',
   }

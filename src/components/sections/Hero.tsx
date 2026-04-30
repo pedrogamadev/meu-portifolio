@@ -56,16 +56,27 @@ export function Hero() {
                 </div>
               </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="font-mono text-xs text-muted-foreground tracking-wide flex flex-wrap items-center gap-2 md:gap-3"
-              >
-                <span>{t('hero.location')}</span>
-                <span>·</span>
-                <span>{t('hero.available')}</span>
-              </motion.div>
+              <div className="flex flex-col gap-2">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="font-mono text-xs text-muted-foreground tracking-wide flex flex-wrap items-center gap-2 md:gap-3"
+                >
+                  <span>{t('hero.location')}</span>
+                  <span>·</span>
+                  <span>{t('hero.available')}</span>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.35 }}
+                  className="font-mono text-xs text-muted-foreground tracking-wide flex flex-wrap items-center"
+                >
+                  {t('hero.languages')}
+                </motion.div>
+              </div>
             </div>
 
             <motion.div
