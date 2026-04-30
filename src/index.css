@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
 @theme {
+  --font-serif: "Newsreader", serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Newsreader", serif; /* Default sans to serif to enforce editorial look where font-sans is hardcoded */
+
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
@@ -35,26 +39,26 @@
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 262.1 83.3% 57.8%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
+    --background: 30 18% 9%; /* #1A1612 - burnt paper */
+    --foreground: 40 20% 90%;
+    --card: 30 15% 12%;
+    --card-foreground: 40 20% 90%;
+    --popover: 30 15% 12%;
+    --popover-foreground: 40 20% 90%;
+    --primary: 12 68% 54%; /* Terracota */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 30 15% 16%;
+    --secondary-foreground: 40 20% 90%;
+    --muted: 30 15% 16%;
+    --muted-foreground: 30 10% 60%;
+    --accent: 12 68% 54%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --radius: 0.5rem;
+    --border: 30 15% 20%;
+    --input: 30 15% 20%;
+    --ring: 12 68% 54%;
+    --radius: 0rem; /* Editorial look is usually sharper, less rounded */
   }
 }
 
