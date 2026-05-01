@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { portfolioData } from '@/data'
 import { useLanguage } from '../../contexts/LanguageContext'
 import arabellaLogo from '@/assets/logo-arabella-dev.png'
+import imgColegas from '@/assets/grid/colegas-trabalho.png'
+import imgPraia from '@/assets/grid/praia.jpg'
 
 export function About() {
   const { language } = useLanguage()
@@ -24,9 +26,9 @@ export function About() {
       ]
 
   const photos = [
-    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80",
+    imgColegas,
     "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=400&q=80",
+    imgPraia,
     "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?auto=format&fit=crop&w=400&q=80"
   ]
 
@@ -51,13 +53,14 @@ export function About() {
   }, [handleScroll])
 
   return (
-    <section
-      ref={sectionRef}
-      id="about"
-      className="relative border-t border-border/30 bg-background"
-      style={{ height: '300vh' }}
-    >
-      {/* Sticky content block */}
+    <>
+      <section
+        ref={sectionRef}
+        id="about"
+        className="relative border-t border-border/30 bg-background"
+        style={{ height: '300vh' }}
+      >
+        {/* Sticky content block */}
       <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
@@ -151,19 +154,89 @@ export function About() {
               </div>
             </div>
 
-            {/* Right column — photo grid (desktop only, 2x2) */}
-            <div className="hidden md:grid grid-cols-2 gap-4 max-w-[320px] w-full ml-auto">
-              {photos.map((src, i) => (
+            {/* Right column — photo grid (desktop only, asymmetric staggered) */}
+            <div className="hidden md:grid grid-cols-2 gap-4 max-w-[460px] w-full ml-auto">
+              {/* Left Column */}
+              <div className="flex flex-col gap-4 pt-6">
+                {[0, 1].map((i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.15, duration: 0.5 }}
+                    className={`w-full overflow-hidden rounded-xl border border-border/40 bg-muted/20 ${i === 0 ? 'aspect-[4/3]' : 'aspect-[3/2]'}`}
+                  >
+                    <img 
+                      src={photos[i]} 
+                      alt="Setup TI" 
+                      className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" 
+                    />
+                  </motion.div>
+                ))}
+              </div>
+              {/* Right Column */}
+              <div className="flex flex-col gap-4">
+                {[2, 3].map((i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.15 + 0.2, duration: 0.5 }}
+                    className={`w-full overflow-hidden rounded-xl border border-border/40 bg-muted/20 ${i === 2 ? 'aspect-[3/2]' : 'aspect-[4/3]'}`}
+                  >
+                    <img 
+                      src={photos[i]} 
+                      alt="Setup TI" 
+                      className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" 
+                    />
+                  </motion.div>
+                ))}
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Photo grid — mobile only, flows naturally after the sticky section */}
+      </section>
+      
+      <section className="w-full bg-background pb-16 pt-0 md:hidden relative z-10 -mt-[20vh]">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto">
+            {/* Left Column */}
+            <div className="flex flex-col gap-4 pt-4">
+              {[0, 1].map((i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="aspect-square overflow-hidden rounded-xl border border-border/40 bg-muted/20"
+                  transition={{ delay: i * 0.15, duration: 0.5 }}
+                  className={`w-full overflow-hidden rounded-xl border border-border/40 bg-muted/20 ${i === 0 ? 'aspect-[4/3]' : 'aspect-[3/2]'}`}
                 >
                   <img 
-                    src={src} 
+                    src={photos[i]} 
+                    alt="Setup TI" 
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" 
+                  />
+                </motion.div>
+              ))}
+            </div>
+            {/* Right Column */}
+            <div className="flex flex-col gap-4">
+              {[2, 3].map((i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15 + 0.2, duration: 0.5 }}
+                  className={`w-full overflow-hidden rounded-xl border border-border/40 bg-muted/20 ${i === 2 ? 'aspect-[3/2]' : 'aspect-[4/3]'}`}
+                >
+                  <img 
+                    src={photos[i]} 
                     alt="Setup TI" 
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" 
                   />
@@ -172,31 +245,7 @@ export function About() {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Photo grid — mobile only, at the very bottom of the tall section */}
-      <div className="absolute bottom-0 left-0 w-full pb-16 md:hidden">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto">
-            {photos.map((src, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="aspect-square overflow-hidden rounded-xl border border-border/40 bg-muted/20"
-              >
-                <img 
-                  src={src} 
-                  alt="Setup TI" 
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" 
-                />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
