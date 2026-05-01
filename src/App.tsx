@@ -1,5 +1,6 @@
 import { Header } from './components/layout/Header'
 import { Footer } from './components/layout/Footer'
+import { CustomCursor } from './components/layout/CustomCursor'
 import { Hero } from './components/sections/Hero'
 import { About } from './components/sections/About'
 import { Stack } from './components/sections/Stack'
@@ -12,6 +13,7 @@ import { LanguageProvider } from './contexts/LanguageContext'
 function App() {
   return (
     <LanguageProvider>
+      <CustomCursor />
       <div className="min-h-screen bg-background text-foreground font-serif selection:bg-primary/30 selection:text-white">
         <Header />
         <main>
