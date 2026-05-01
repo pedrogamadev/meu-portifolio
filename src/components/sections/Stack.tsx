@@ -200,9 +200,6 @@ export function Stack() {
   const [paused, setPaused] = useState(false)
   const [modalOpen, setModalOpen] = useState(false)
 
-  const labelFront = language === 'pt' ? 'Front-end, UI e ferramentas visuais' : 'Front-end, UI & visual tools'
-  const labelBack  = language === 'pt' ? 'Back-end, banco de dados e APIs'     : 'Back-end, databases & APIs'
-
   return (
     <>
       <section id="stack" className="py-16 border-t border-border/30 bg-background overflow-hidden">
@@ -223,8 +220,8 @@ export function Stack() {
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          <MarqueeRow tools={frontendTools} direction="left"  duration={38} paused={paused} label={labelFront} />
-          <MarqueeRow tools={backendTools}  direction="right" duration={44} paused={paused} label={labelBack} />
+          <MarqueeRow tools={frontendTools} direction="left"  duration={38} paused={paused} />
+          <MarqueeRow tools={backendTools}  direction="right" duration={44} paused={paused} />
         </div>
 
         {/* CTA button */}
