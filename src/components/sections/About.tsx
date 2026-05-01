@@ -172,7 +172,7 @@ export function About() {
                     <img 
                       src={photos[i]} 
                       alt="Setup TI" 
-                      className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" 
+                      className="w-full h-full object-cover transition-all duration-500"
                     />
                   </motion.div>
                 ))}
@@ -188,10 +188,10 @@ export function About() {
                     transition={{ delay: i * 0.15 + 0.2, duration: 0.5 }}
                     className={`w-full overflow-hidden rounded-xl border border-border/40 bg-muted/20 ${i === 2 ? 'aspect-[3/2]' : 'aspect-[4/3]'}`}
                   >
-                    <img 
-                      src={photos[i]} 
-                      alt="Setup TI" 
-                      className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" 
+                    <img
+                      src={photos[i]}
+                      alt="Setup TI"
+                      className="w-full h-full object-cover transition-all duration-500"
                     />
                   </motion.div>
                 ))}
@@ -221,7 +221,7 @@ export function About() {
                   <img 
                     src={photos[i]} 
                     alt="Setup TI" 
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" 
+                    className="w-full h-full object-cover transition-all duration-500" 
                   />
                 </motion.div>
               ))}
@@ -240,7 +240,7 @@ export function About() {
                   <img 
                     src={photos[i]} 
                     alt="Setup TI" 
-                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" 
+                    className="w-full h-full object-cover transition-all duration-500" 
                   />
                 </motion.div>
               ))}
