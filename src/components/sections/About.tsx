@@ -6,7 +6,7 @@ import arabellaLogo from '@/assets/logo-arabella-dev.png'
 
 export function About() {
   const { language } = useLanguage()
-  const { personalInfo, highlights } = portfolioData[language]
+  const { personalInfo } = portfolioData[language]
 
   const sectionRef = useRef<HTMLElement>(null)
   const [activeIndex, setActiveIndex] = useState(0)
@@ -22,6 +22,13 @@ export function About() {
         'I like to work beyond the screen: understanding business rules, structuring the database, building APIs, caring for the user experience, and delivering solutions that are easy to maintain, performant, and ready for production.',
         'I have experience with SaaS systems, administrative dashboards, digital catalogs, landing pages, and platforms with multiple user profiles. My focus is on building functional, well-organized products that provide a good experience for those who use them and those who maintain them.'
       ]
+
+  const photos = [
+    "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=400&q=80",
+    "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?auto=format&fit=crop&w=400&q=80"
+  ]
 
   const handleScroll = useCallback(() => {
     if (!sectionRef.current) return
@@ -144,19 +151,22 @@ export function About() {
               </div>
             </div>
 
-            {/* Right column — highlights (desktop only, 2x2) */}
-            <div className="hidden md:grid grid-cols-2 gap-x-10 gap-y-14">
-              {highlights.map((item, i) => (
+            {/* Right column — photo grid (desktop only, 2x2) */}
+            <div className="hidden md:grid grid-cols-2 gap-4 max-w-[320px] w-full ml-auto">
+              {photos.map((src, i) => (
                 <motion.div
-                  key={item.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="space-y-3"
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                  className="aspect-square overflow-hidden rounded-xl border border-border/40 bg-muted/20"
                 >
-                  <item.icon className="text-primary" size={24} strokeWidth={1.5} />
-                  <h4 className="font-serif italic text-lg text-foreground">{item.title}</h4>
+                  <img 
+                    src={src} 
+                    alt="Setup TI" 
+                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" 
+                  />
                 </motion.div>
               ))}
             </div>
@@ -164,21 +174,24 @@ export function About() {
         </div>
       </div>
 
-      {/* Highlights — mobile only, at the very bottom of the tall section */}
+      {/* Photo grid — mobile only, at the very bottom of the tall section */}
       <div className="absolute bottom-0 left-0 w-full pb-16 md:hidden">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-2 gap-x-8 gap-y-10">
-            {highlights.map((item, i) => (
+          <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto">
+            {photos.map((src, i) => (
               <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                key={i}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="space-y-3"
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                className="aspect-square overflow-hidden rounded-xl border border-border/40 bg-muted/20"
               >
-                <item.icon className="text-primary" size={24} strokeWidth={1.5} />
-                <h4 className="font-serif italic text-lg text-foreground">{item.title}</h4>
+                <img 
+                  src={src} 
+                  alt="Setup TI" 
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500" 
+                />
               </motion.div>
             ))}
           </div>
