@@ -5,6 +5,8 @@ import { useLanguage } from '../../contexts/LanguageContext'
 import arabellaLogo from '@/assets/logo-arabella-dev.png'
 import imgColegas from '@/assets/grid/colegas-trabalho.png'
 import imgPraia from '@/assets/grid/praia.jpg'
+import imgJogosGoRn from '@/assets/grid/jogos-go-rn.png'
+import imgSetup from '@/assets/grid/setup.png'
 
 export function About() {
   const { language } = useLanguage()
@@ -27,9 +29,9 @@ export function About() {
 
   const photos = [
     imgColegas,
-    "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80",
+    imgJogosGoRn,
     imgPraia,
-    "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?auto=format&fit=crop&w=400&q=80"
+    imgSetup,
   ]
 
   const handleScroll = useCallback(() => {
