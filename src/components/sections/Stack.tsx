@@ -6,8 +6,9 @@ import claudeIcon      from '@/assets/icons/claude.svg'
 import postmanIcon     from '@/assets/icons/postman.svg'
 import dbeaverIcon     from '@/assets/icons/dbeaver.svg'
 import heidiSqlIcon    from '@/assets/icons/heidisql.png'
+import renderIcon      from '@/assets/icons/render.svg'
 
-type Tech = { name: string; icon?: string; fallback?: string }
+type Tech = { name: string; icon?: string; fallback?: string; title?: string }
 
 const frontendTools: Tech[] = [
   { name: 'JavaScript',    icon: 'https://skillicons.dev/icons?i=js' },
@@ -15,11 +16,10 @@ const frontendTools: Tech[] = [
   { name: 'React',         icon: 'https://skillicons.dev/icons?i=react' },
   { name: 'Vite',          icon: 'https://skillicons.dev/icons?i=vite' },
   { name: 'Tailwind CSS',  icon: 'https://skillicons.dev/icons?i=tailwind' },
-  { name: 'Shadcn UI',     icon: 'https://skillicons.dev/icons?i=shadcn' },
   { name: 'GitHub',        icon: 'https://skillicons.dev/icons?i=github' },
-  { name: 'Antigravity',   icon: antigravityIcon },
-  { name: 'Nano Banana 2', icon: nanoBananaIcon },
-  { name: 'Claude Design', icon: claudeIcon },
+  { name: 'Antigravity',   icon: antigravityIcon,  fallback: 'AG' },
+  { name: 'Nano Banana',   icon: nanoBananaIcon,   fallback: 'NB', title: 'Nano Banana 2' },
+  { name: 'Claude Design', icon: claudeIcon,       fallback: 'CD' },
 ]
 
 const backendTools: Tech[] = [
@@ -28,18 +28,19 @@ const backendTools: Tech[] = [
   { name: 'Prisma',     icon: 'https://skillicons.dev/icons?i=prisma' },
   { name: 'PostgreSQL', icon: 'https://skillicons.dev/icons?i=postgres' },
   { name: 'Supabase',   icon: 'https://skillicons.dev/icons?i=supabase' },
-  { name: 'Postman',    icon: postmanIcon },
-  { name: 'DBeaver',    icon: dbeaverIcon },
-  { name: 'HeidiSQL',   icon: heidiSqlIcon },
+  { name: 'Postman',    icon: postmanIcon,   fallback: 'PM' },
+  { name: 'DBeaver',    icon: dbeaverIcon, fallback: 'DB' },
+  { name: 'HeidiSQL',   icon: heidiSqlIcon,  fallback: 'HS' },
   { name: 'Docker',     icon: 'https://skillicons.dev/icons?i=docker' },
   { name: 'Vercel',     icon: 'https://skillicons.dev/icons?i=vercel' },
+  { name: 'Render',     icon: renderIcon,    fallback: 'RD' },
   { name: 'Python',     icon: 'https://skillicons.dev/icons?i=python' },
   { name: 'Git',        icon: 'https://skillicons.dev/icons?i=git' },
 ]
 
-function TechIcon({ name, icon, fallback }: Tech) {
+function IconSlot({ name, icon, fallback }: Pick<Tech, 'name' | 'icon' | 'fallback'> & { size?: number }) {
   return (
-    <div className="flex flex-col items-center gap-2 p-4 rounded-xl border border-border/40 bg-card/60 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 cursor-default">
+    <>
       {icon ? (
         <img
           src={icon}
@@ -63,14 +64,13 @@ function TechIcon({ name, icon, fallback }: Tech) {
           {fallback ?? name.slice(0, 2).toUpperCase()}
         </span>
       </div>
-      <span className="text-[11px] font-mono text-muted-foreground text-center leading-tight">{name}</span>
-    </div>
+    </>
   )
 }
 
-function TechCard({ name, icon, fallback }: Tech) {
+function SmallIconSlot({ name, icon, fallback }: Pick<Tech, 'name' | 'icon' | 'fallback'>) {
   return (
-    <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border border-border/40 bg-card/60 backdrop-blur-sm hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 cursor-default mx-2 shrink-0">
+    <>
       {icon ? (
         <img
           src={icon}
@@ -94,6 +94,31 @@ function TechCard({ name, icon, fallback }: Tech) {
           {fallback ?? name.slice(0, 2).toUpperCase()}
         </span>
       </div>
+    </>
+  )
+}
+
+function TechIcon({ name, icon, fallback, title }: Tech) {
+  return (
+    <div
+      className="flex flex-col items-center gap-2 p-3 rounded-xl border border-border/40 bg-card/60 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 cursor-default"
+      title={title ?? name}
+    >
+      <IconSlot name={name} icon={icon} fallback={fallback} />
+      <span className="text-[10px] font-mono text-muted-foreground text-center leading-tight line-clamp-2 w-full">
+        {name}
+      </span>
+    </div>
+  )
+}
+
+function TechCard({ name, icon, fallback, title }: Tech) {
+  return (
+    <div
+      className="flex items-center gap-3 px-4 py-2.5 rounded-xl border border-border/40 bg-card/60 backdrop-blur-sm hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 cursor-default mx-2 shrink-0"
+      title={title ?? name}
+    >
+      <SmallIconSlot name={name} icon={icon} fallback={fallback} />
       <span className="text-sm font-mono text-muted-foreground whitespace-nowrap">{name}</span>
     </div>
   )
@@ -114,21 +139,19 @@ function MarqueeRow({ tools, direction, duration, paused }: MarqueeRowProps) {
       : `marquee-right ${duration}s linear infinite`
 
   return (
-    <div>
+    <div
+      style={{
+        maskImage: 'linear-gradient(to right, transparent, black 6%, black 94%, transparent)',
+        WebkitMaskImage: 'linear-gradient(to right, transparent, black 6%, black 94%, transparent)',
+      }}
+    >
       <div
-        style={{
-          maskImage: 'linear-gradient(to right, transparent, black 6%, black 94%, transparent)',
-          WebkitMaskImage: 'linear-gradient(to right, transparent, black 6%, black 94%, transparent)',
-        }}
+        className="flex w-max"
+        style={{ animation, animationPlayState: paused ? 'paused' : 'running' }}
       >
-        <div
-          className="flex w-max"
-          style={{ animation, animationPlayState: paused ? 'paused' : 'running' }}
-        >
-          {items.map((tech, i) => (
-            <TechCard key={i} {...tech} />
-          ))}
-        </div>
+        {items.map((tech, i) => (
+          <TechCard key={i} {...tech} />
+        ))}
       </div>
     </div>
   )
@@ -151,6 +174,8 @@ function StackModal({ open, onClose, language }: { open: boolean; onClose: () =>
 
   if (!open) return null
 
+  const allTools = [...frontendTools, ...backendTools]
+
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
@@ -168,7 +193,7 @@ function StackModal({ open, onClose, language }: { open: boolean; onClose: () =>
               {language === 'pt' ? 'Stack completa' : 'Full stack'}
             </h3>
             <p className="text-xs font-mono text-muted-foreground mt-0.5">
-              {frontendTools.length + backendTools.length} {language === 'pt' ? 'tecnologias' : 'technologies'}
+              {allTools.length} {language === 'pt' ? 'tecnologias' : 'technologies'}
             </p>
           </div>
           <button
@@ -185,7 +210,7 @@ function StackModal({ open, onClose, language }: { open: boolean; onClose: () =>
         {/* Body */}
         <div className="px-6 py-6">
           <div className="grid grid-cols-4 sm:grid-cols-5 gap-3">
-            {[...frontendTools, ...backendTools].map((tech) => (
+            {allTools.map((tech) => (
               <TechIcon key={tech.name} {...tech} />
             ))}
           </div>
@@ -224,7 +249,6 @@ export function Stack() {
           <MarqueeRow tools={backendTools}  direction="right" duration={44} paused={paused} />
         </div>
 
-        {/* CTA button */}
         <div className="flex justify-center mt-10">
           <button
             onClick={() => setModalOpen(true)}
