@@ -57,6 +57,7 @@ export const projects = [
     title: "Catálogo Fácil",
     context: "SaaS de catálogo B2B",
     description: "SaaS de catálogo B2B para cadastrar produtos, personalizar a vitrine e facilitar pedidos via catálogo digital com foco em uso simples e rápido.",
+    status: "Em produção",
     tags: ["React", "TypeScript", "Node.js", "Prisma", "PostgreSQL"],
     image: catalogoImg,
     color: "from-green-500/20 to-emerald-900/40",
@@ -78,15 +79,15 @@ export const projects = [
     title: "SMP",
     context: "Sistema administrativo",
     description: "Sistema web administrativo para monitorar projetos com autenticação, RBAC, CRUD e Kanban.",
-    tags: ["React", "TypeScript", "Node.js", "RBAC", "Kanban"],
+    tags: ["React", "TypeScript", "Node.js", "RBAC"],
     color: "from-amber-500/20 to-orange-900/40"
   },
   {
     id: "norteia",
     title: "NorteIA",
     context: "SaaS comercial com IA",
-    description: "SaaS multi-tenant de gestão comercial focado no ciclo Lead → Proposta → Cliente → Projeto. O diferencial é a geração de propostas com IA que aprende com o histórico do workspace, e conformidade LGPD desde o dia 1.",
-    subtitle: "Para freelancers, profissionais liberais e microagências que hoje gerenciam clientes em planilhas, WhatsApp e Google Docs fragmentados.",
+    description: "SaaS multi-tenant de gestão comercial focado no ciclo Lead → Proposta → Cliente → Projeto, com geração de propostas por IA e base orientada à LGPD.",
+    subtitle: "Para freelancers, profissionais liberais e microagências.",
     tags: ["SaaS", "Multi-tenant", "IA", "LGPD"],
     color: "from-violet-500/20 to-purple-900/40"
   }

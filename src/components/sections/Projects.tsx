@@ -10,6 +10,7 @@ type Project = {
   context: string
   description: string
   subtitle?: string
+  status?: string
   tags: string[]
   image?: string
   color: string
@@ -26,30 +27,34 @@ export function Projects() {
 
   return (
     <Section id="projects">
-      <div className="mb-14 space-y-4">
-        <p className="text-primary font-mono text-xs tracking-widest uppercase">
-          {language === 'pt' ? 'Projetos' : 'Projects'}
-        </p>
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-          {language === 'pt' ? 'Projetos em destaque' : 'Featured projects'}
-        </h2>
-        <p className="text-muted-foreground max-w-lg leading-relaxed">
+      {/* Header — 2 colunas no desktop */}
+      <div className="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <div className="space-y-2 shrink-0">
+          <p className="text-primary font-mono text-xs tracking-widest uppercase">
+            {language === 'pt' ? 'Projetos' : 'Projects'}
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+            {language === 'pt' ? 'Projetos em destaque' : 'Featured projects'}
+          </h2>
+        </div>
+        <p className="text-muted-foreground max-w-xs text-sm leading-relaxed md:pb-1">
           {language === 'pt'
             ? 'Uma seleção de produtos e sistemas que mostram minha visão de produto, cuidado com interface e execução full-stack.'
             : 'A selection of products and systems that show my product vision, attention to interface, and full-stack execution.'}
         </p>
       </div>
 
+      {/* Card principal */}
       {featured && (
         <motion.article
-          initial={{ opacity: 0, y: 28 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.5 }}
-          className="mb-5 border border-border overflow-hidden"
+          transition={{ duration: 0.45 }}
+          className="mb-4 border border-border overflow-hidden md:h-[340px]"
         >
-          <div className="flex flex-col md:flex-row">
-            <div className="md:w-[56%] shrink-0 overflow-hidden bg-card">
+          <div className="flex flex-col md:flex-row h-full">
+            <div className="md:w-[52%] shrink-0 overflow-hidden bg-card">
               {featured.image ? (
                 <img
                   src={featured.image}
@@ -57,7 +62,7 @@ export function Projects() {
                   className="w-full object-cover aspect-[16/10] md:h-full md:aspect-auto"
                 />
               ) : (
-                <div className="w-full aspect-[16/10] md:h-full md:aspect-auto md:min-h-[300px] bg-card flex items-center justify-center">
+                <div className="w-full aspect-[16/10] md:h-full bg-card flex items-center justify-center">
                   <span className="font-mono text-4xl font-bold opacity-[0.06] uppercase tracking-tighter select-none">
                     {featured.title}
                   </span>
@@ -65,84 +70,91 @@ export function Projects() {
               )}
             </div>
 
-            <div className="p-8 md:p-10 flex flex-col justify-between gap-8 border-t md:border-t-0 md:border-l border-border">
-              <div className="space-y-4">
-                <div className="flex items-center gap-2.5 flex-wrap">
-                  <span className="text-primary font-mono text-[10px] tracking-widest uppercase">
+            <div className="p-6 md:p-8 flex flex-col justify-between gap-4 border-t md:border-t-0 md:border-l border-border overflow-hidden">
+              <div className="space-y-3">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className="text-primary font-mono text-[9px] tracking-widest uppercase">
                     {featured.context}
                   </span>
-                  <span className="px-2 py-0.5 border border-primary/40 text-primary font-mono text-[9px] tracking-widest uppercase">
+                  <span className="px-1.5 py-0.5 border border-primary/35 text-primary font-mono text-[8px] tracking-widest uppercase">
                     {language === 'pt' ? 'Destaque' : 'Featured'}
                   </span>
                 </div>
-                <h3 className="text-3xl md:text-4xl font-bold tracking-tight">{featured.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{featured.description}</p>
+                <h3 className="text-2xl md:text-[1.75rem] font-bold tracking-tight leading-snug">
+                  {featured.title}
+                </h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {featured.description}
+                </p>
               </div>
 
-              <div className="space-y-5">
+              <div className="space-y-3">
                 <div className="flex flex-wrap gap-1.5">
                   {featured.tags.map(tag => (
                     <span
                       key={tag}
-                      className="px-2.5 py-1 border border-border font-mono text-[10px] font-semibold uppercase tracking-wider text-muted-foreground"
+                      className="px-2 py-0.5 border border-border font-mono text-[9px] font-semibold uppercase tracking-wider text-muted-foreground"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-                {featured.url && (
-                  <a
-                    href={featured.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground hover:text-primary transition-colors group"
-                  >
-                    {language === 'pt' ? 'Ver projeto' : 'View project'}
-                    <ArrowUpRight
-                      size={15}
-                      className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                    />
-                  </a>
-                )}
+                <div className="flex items-center justify-between gap-4">
+                  {featured.status && (
+                    <span className="flex items-center gap-1.5 font-mono text-[11px] text-muted-foreground">
+                      <span className="w-1.5 h-1.5 rounded-full bg-green-500/60 shrink-0" />
+                      {featured.status}
+                    </span>
+                  )}
+                  {featured.url && (
+                    <a
+                      href={featured.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-auto inline-flex items-center gap-1 text-sm font-semibold text-foreground hover:text-primary transition-colors group"
+                    >
+                      {language === 'pt' ? 'Ver projeto' : 'View project'}
+                      <ArrowUpRight
+                        size={14}
+                        className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                      />
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           </div>
         </motion.article>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {/* Grid secundária */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {secondary.map((project, i) => (
           <motion.article
             key={project.id}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
-            transition={{ delay: i * 0.07, duration: 0.4 }}
-            className="border border-border p-6 flex flex-col gap-4 hover:border-primary/30 transition-colors"
+            transition={{ delay: i * 0.07, duration: 0.35 }}
+            className="border border-border p-5 flex flex-col gap-3 hover:border-primary/25 transition-colors"
           >
-            <div className="space-y-1">
-              <p className="text-primary font-mono text-[10px] tracking-widest uppercase">
+            <div>
+              <p className="text-primary font-mono text-[9px] tracking-widest uppercase mb-1">
                 {project.context}
               </p>
-              <h4 className="text-xl font-bold tracking-tight">{project.title}</h4>
+              <h4 className="text-lg font-bold tracking-tight">{project.title}</h4>
             </div>
 
-            <p className="text-muted-foreground text-sm leading-relaxed flex-1">
+            <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 flex-1">
               {project.description}
             </p>
 
-            {project.subtitle && (
-              <p className="text-muted-foreground/50 text-xs leading-relaxed">
-                {project.subtitle}
-              </p>
-            )}
-
-            <div className="space-y-3 mt-auto">
-              <div className="flex flex-wrap gap-1.5">
+            <div className="mt-auto pt-3 border-t border-border/50 space-y-2.5">
+              <div className="flex flex-wrap gap-1">
                 {project.tags.map(tag => (
                   <span
                     key={tag}
-                    className="px-2 py-0.5 border border-border font-mono text-[9px] font-semibold uppercase tracking-wider text-muted-foreground"
+                    className="px-1.5 py-0.5 border border-border/60 font-mono text-[8px] font-semibold uppercase tracking-wider text-muted-foreground/60"
                   >
                     {tag}
                   </span>
@@ -153,11 +165,11 @@ export function Projects() {
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground hover:text-primary transition-colors group"
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-foreground hover:text-primary transition-colors group"
                 >
                   {language === 'pt' ? 'Ver projeto' : 'View project'}
                   <ArrowUpRight
-                    size={13}
+                    size={12}
                     className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
                   />
                 </a>

@@ -58,6 +58,7 @@ export const projects = [
     title: "Catálogo Fácil",
     context: "B2B Catalog SaaS",
     description: "B2B catalog SaaS to register products, customize the storefront, and streamline orders via digital catalog with a focus on simplicity and speed.",
+    status: "Live",
     tags: ["React", "TypeScript", "Node.js", "Prisma", "PostgreSQL"],
     image: catalogoImg,
     color: "from-green-500/20 to-emerald-900/40",
@@ -79,15 +80,15 @@ export const projects = [
     title: "SMP",
     context: "Admin system",
     description: "Web admin system to monitor projects with authentication, RBAC, CRUD, and Kanban.",
-    tags: ["React", "TypeScript", "Node.js", "RBAC", "Kanban"],
+    tags: ["React", "TypeScript", "Node.js", "RBAC"],
     color: "from-amber-500/20 to-orange-900/40"
   },
   {
     id: "norteia",
     title: "NorteIA",
     context: "Commercial SaaS with AI",
-    description: "Multi-tenant commercial management SaaS focused on the Lead → Proposal → Client → Project cycle. The differentiator is AI-powered proposal generation that learns from workspace history, with LGPD compliance from day one.",
-    subtitle: "For freelancers, liberal professionals, and micro-agencies currently managing clients across spreadsheets, WhatsApp, and fragmented Google Docs.",
+    description: "Multi-tenant commercial management SaaS focused on the Lead → Proposal → Client → Project cycle, with AI-generated proposals and LGPD-oriented foundation.",
+    subtitle: "For freelancers, liberal professionals, and micro-agencies.",
     tags: ["SaaS", "Multi-tenant", "AI", "LGPD"],
     color: "from-violet-500/20 to-purple-900/40"
   }
