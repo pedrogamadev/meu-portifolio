@@ -73,25 +73,34 @@ function MobileProjectCard({ project, isActive, setActiveId, language }: { proje
       className="mb-12 last:mb-0 relative"
     >
       {/* Imagem do Projeto (O interior da torradeira) */}
-      <div className="relative w-full aspect-[16/10] overflow-hidden rounded-t-xl bg-card border border-border border-b-0 z-0">
-        <AnimatePresence initial={false}>
-          {isActive && cover && (
-            <motion.img
-              key="image"
-              src={cover}
-              alt={project.title}
-              initial={{ y: '100%' }}
+      <AnimatePresence initial={false}>
+        {isActive && cover && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ type: 'spring', damping: 22, stiffness: 150 }}
+            className="relative w-full overflow-hidden rounded-t-xl bg-card border border-border border-b-0 z-0"
+          >
+            <motion.div
+              initial={{ y: '50%' }}
               animate={{ y: 0 }}
-              exit={{ y: '100%' }}
+              exit={{ y: '50%' }}
               transition={{ type: 'spring', damping: 22, stiffness: 150 }}
-              className="absolute inset-0 w-full h-full object-cover object-top"
-            />
-          )}
-        </AnimatePresence>
-      </div>
+              className="relative w-full aspect-[16/10]"
+            >
+              <img
+                src={cover}
+                alt={project.title}
+                className="absolute inset-0 w-full h-full object-cover object-top"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Conteúdo de Texto (O corpo da torradeira) */}
-      <div className="relative z-10 bg-[#121212] border border-border rounded-b-xl p-6 shadow-[0_-10px_20px_rgba(0,0,0,0.5)]">
+      <div className="relative z-10 bg-[#121212] border border-border rounded-xl p-6 shadow-[0_-10px_20px_rgba(0,0,0,0.5)]">
         <div className="space-y-4">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="text-primary font-mono text-[9px] tracking-widest uppercase">
