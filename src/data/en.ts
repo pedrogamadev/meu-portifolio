@@ -1,7 +1,8 @@
 import { Globe, LayoutTemplate, MonitorSmartphone, Zap, Layers, Container } from 'lucide-react'
 import catalogoImg from '@/assets/projetos/catalogo.png'
 import curriculoImg from '@/assets/projetos/curriculo.png'
-import type { Experience } from './pt'
+import norteiaImg from '@/assets/projetos/norteia.png'
+import type { Experience, Project } from './pt'
 
 export const personalInfo = {
   name: "Pedro Humberto Gama de Medeiros",
@@ -52,45 +53,61 @@ export const stacks = [
   }
 ]
 
-export const projects = [
+export const projects: Project[] = [
   {
     id: "catalogofacil",
     title: "Catálogo Fácil",
     context: "B2B Catalog SaaS",
     description: "B2B catalog SaaS to register products, customize the storefront, and streamline orders via digital catalog with a focus on simplicity and speed.",
+    longDescription: "Catálogo Fácil was built to solve a real problem for small businesses working with B2B sales: the difficulty of managing and sharing product catalogs in an organized and professional way.\n\nThe platform lets store owners register products, customize the storefront with their brand, and share a digital catalog link with their clients. Buyers browse the catalog and place orders simply, without installing any app.\n\nThe backend was built with Node.js and Prisma ORM on PostgreSQL, with a multi-tenant architecture — each store has its isolated space. The React + TypeScript frontend was designed to work well for both the store owner and the end buyer.",
     status: "Live",
     tags: ["React", "TypeScript", "Node.js", "Prisma", "PostgreSQL"],
     image: catalogoImg,
     color: "from-green-500/20 to-emerald-900/40",
-    url: "https://www.catalogofacil.shop/"
+    url: "https://www.catalogofacil.shop/",
+    audience: "Small and medium businesses working with B2B sales — distributors, sales reps, and wholesalers who need a more organized way to share products with their clients.",
+    viableFor: "Any business that sells to other companies via catalog, especially those currently using PDFs, WhatsApp, or spreadsheets to send product lists. Built for those who want to move to something more professional without losing simplicity."
   },
   {
     id: "curriculoclaro",
     title: "Currículo Claro",
     context: "Resume Generator",
     description: "Web tool to build clear, objective, ATS-friendly resumes focused on simplicity and readability.",
+    longDescription: "Currículo Claro came from observing that most resume-building tools prioritize excessive design over readability by ATS (Applicant Tracking System) software — the tool that filters candidates before they reach a human recruiter.\n\nThe tool guides users through clear sections — personal info, experience, education, and skills — with clean formatting and PDF export optimized for automated screening.\n\nThe interface was built with React, TypeScript, Shadcn/UI, and Tailwind CSS. All PDF generation happens in the browser, with no backend required.",
+    status: "Live",
     tags: ["React", "TypeScript", "Shadcn/UI", "Tailwind CSS"],
     image: curriculoImg,
     color: "from-blue-500/20 to-cyan-900/40",
     url: "https://curriculo-claro.vercel.app/",
-    github: "https://github.com/pedrogamadev/Curriculo-Claro.git"
+    github: "https://github.com/pedrogamadev/Curriculo-Claro.git",
+    audience: "Professionals looking for new opportunities who want to make sure their resume gets past automated filters and reaches the hiring team.",
+    viableFor: "Any job seeker, especially in tech, business, and marketing, where larger companies use ATS for screening. Ideal for those who don't want to rely on designers or heavy templates."
   },
   {
     id: "smp",
     title: "SMP",
     context: "Admin system",
     description: "Web admin system to monitor projects with authentication, RBAC, CRUD, and Kanban.",
+    longDescription: "SMP (Project Monitoring System) is a web admin platform built to centralize project tracking in a single interface.\n\nIt includes user authentication, role-based access control (RBAC), full CRUD for projects and tasks, and a Kanban board to visualize workflow. The architecture was designed to support multiple users with distinct permission levels.\n\nBuilt with React on the frontend and Node.js on the backend, with TypeScript throughout the stack.",
+    status: "In development",
     tags: ["React", "TypeScript", "Node.js", "RBAC"],
-    color: "from-amber-500/20 to-orange-900/40"
+    color: "from-amber-500/20 to-orange-900/40",
+    audience: "Managers and tech leads who need to track project and team progress without relying on expensive or complex tools.",
+    viableFor: "Small dev teams, digital agencies, and companies managing internal projects who want a centralized view of the status of each delivery."
   },
   {
     id: "norteia",
     title: "NorteIA",
     context: "Commercial SaaS with AI",
     description: "Multi-tenant commercial management SaaS focused on the Lead → Proposal → Client → Project cycle, with AI-generated proposals and LGPD-oriented foundation.",
+    longDescription: "NorteIA is a multi-tenant commercial management SaaS designed around the real workflow of freelancers and small agencies: from first contact with a lead to project completion.\n\nThe platform covers the full cycle — lead capture, proposal creation (with AI-assisted text generation), client management, and project tracking. The entire database was structured for LGPD compliance, ensuring client data is handled securely and transparently.\n\nThe multi-tenant architecture fully isolates each user's environment, with no interference between accounts.",
     subtitle: "For freelancers, liberal professionals, and micro-agencies.",
+    status: "In development",
     tags: ["SaaS", "Multi-tenant", "AI", "LGPD"],
-    color: "from-violet-500/20 to-purple-900/40"
+    image: norteiaImg,
+    color: "from-violet-500/20 to-purple-900/40",
+    audience: "Freelancers, designers, developers, and micro-agencies currently managing their sales pipeline in spreadsheets, WhatsApp, or generic tools and losing track of the deal cycle.",
+    viableFor: "Solo professionals or small agencies (1–10 people) who need a lean, integrated tool to manage leads, proposals, and projects — without paying for the excess features of platforms like HubSpot or Pipedrive."
   }
 ]
 

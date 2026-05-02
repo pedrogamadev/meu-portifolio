@@ -17,10 +17,10 @@ export function Header() {
   }, [])
 
   const navLinks = [
-    { name: t('nav.about'), href: '#about' },
-    { name: t('nav.stack'), href: '#stack' },
-    { name: t('nav.projects'), href: '#projects' },
-    { name: t('nav.contact'), href: '#contact' },
+    { name: t('nav.about'), href: '/#about' },
+    { name: t('nav.stack'), href: '/#stack' },
+    { name: t('nav.projects'), href: '/#projects' },
+    { name: t('nav.contact'), href: '/#contact' },
   ]
 
   return (
@@ -31,7 +31,7 @@ export function Header() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <motion.a
-          href="#"
+          href="/"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           className="text-sm font-mono tracking-widest text-foreground font-bold"
@@ -59,7 +59,7 @@ export function Header() {
             {language === 'pt' ? 'EN' : 'PT'}
           </button>
           <motion.a
-            href="#contact"
+            href="/#contact"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             className="px-4 py-2 border border-primary text-primary text-xs font-mono uppercase tracking-widest hover:bg-primary hover:text-primary-foreground transition-colors"
@@ -99,7 +99,7 @@ export function Header() {
             {language === 'pt' ? 'Switch to English' : 'Mudar para Português'}
           </button>
           <a
-            href="#contact"
+            href="/#contact"
             className="w-full py-3 mt-2 border border-primary text-primary text-center text-xs font-mono uppercase tracking-widest hover:bg-primary hover:text-primary-foreground transition-colors"
             onClick={() => setIsMobileMenuOpen(false)}
           >

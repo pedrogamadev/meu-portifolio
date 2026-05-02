@@ -1,22 +1,10 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { portfolioData } from '@/data'
 import { Section } from '../layout/Section'
 import { ArrowUpRight } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
-
-type Project = {
-  id: string
-  title: string
-  context: string
-  description: string
-  subtitle?: string
-  status?: string
-  tags: string[]
-  image?: string
-  color: string
-  url?: string
-  github?: string
-}
+import type { Project } from '@/data/pt'
 
 export function Projects() {
   const { language } = useLanguage()
@@ -106,20 +94,32 @@ export function Projects() {
                       {featured.status}
                     </span>
                   )}
-                  {featured.url && (
-                    <a
-                      href={featured.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ml-auto inline-flex items-center gap-1 text-sm font-semibold text-foreground hover:text-primary transition-colors group"
+                  <div className="ml-auto flex items-center gap-4">
+                    <Link
+                      to={`/projeto/${featured.id}`}
+                      className="inline-flex items-center gap-1 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors group"
                     >
-                      {language === 'pt' ? 'Ver projeto' : 'View project'}
+                      {language === 'pt' ? 'Ver detalhes' : 'Details'}
                       <ArrowUpRight
                         size={14}
                         className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
                       />
-                    </a>
-                  )}
+                    </Link>
+                    {featured.url && (
+                      <a
+                        href={featured.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-sm font-semibold text-foreground hover:text-primary transition-colors group"
+                      >
+                        {language === 'pt' ? 'Ver projeto' : 'View project'}
+                        <ArrowUpRight
+                          size={14}
+                          className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                        />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -160,20 +160,32 @@ export function Projects() {
                   </span>
                 ))}
               </div>
-              {project.url && (
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-foreground hover:text-primary transition-colors group"
+              <div className="flex items-center gap-3 flex-wrap">
+                <Link
+                  to={`/projeto/${project.id}`}
+                  className="inline-flex items-center gap-1 text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors group"
                 >
-                  {language === 'pt' ? 'Ver projeto' : 'View project'}
+                  {language === 'pt' ? 'Ver detalhes' : 'Details'}
                   <ArrowUpRight
                     size={12}
                     className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
                   />
-                </a>
-              )}
+                </Link>
+                {project.url && (
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-foreground hover:text-primary transition-colors group"
+                  >
+                    {language === 'pt' ? 'Ver projeto' : 'View project'}
+                    <ArrowUpRight
+                      size={12}
+                      className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                    />
+                  </a>
+                )}
+              </div>
             </div>
           </motion.article>
         ))}

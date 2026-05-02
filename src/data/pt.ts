@@ -1,6 +1,24 @@
 import { Globe, LayoutTemplate, MonitorSmartphone, Zap, Layers, Container } from 'lucide-react'
 import catalogoImg from '@/assets/projetos/catalogo.png'
 import curriculoImg from '@/assets/projetos/curriculo.png'
+import norteiaImg from '@/assets/projetos/norteia.png'
+
+export interface Project {
+  id: string
+  title: string
+  context: string
+  description: string
+  longDescription?: string
+  subtitle?: string
+  status?: string
+  tags: string[]
+  image?: string
+  color: string
+  url?: string
+  github?: string
+  audience?: string
+  viableFor?: string
+}
 
 export const personalInfo = {
   name: "Pedro Humberto Gama de Medeiros",
@@ -51,45 +69,61 @@ export const stacks = [
   }
 ]
 
-export const projects = [
+export const projects: Project[] = [
   {
     id: "catalogofacil",
     title: "Catálogo Fácil",
     context: "SaaS de catálogo B2B",
     description: "SaaS de catálogo B2B para cadastrar produtos, personalizar a vitrine e facilitar pedidos via catálogo digital com foco em uso simples e rápido.",
+    longDescription: "O Catálogo Fácil nasceu para resolver um problema real de pequenas empresas que trabalham com vendas B2B: a dificuldade de gerenciar e compartilhar catálogos de produtos de forma organizada e profissional.\n\nA plataforma permite que lojistas cadastrem produtos, personalizem a vitrine com sua identidade visual e compartilhem um link de catálogo digital com seus clientes. Os compradores navegam pelo catálogo e enviam pedidos de forma simples, sem precisar instalar nenhum aplicativo.\n\nO backend foi construído com Node.js e Prisma ORM sobre PostgreSQL, com arquitetura multi-tenant — cada loja tem seu espaço isolado. O frontend em React com TypeScript foi pensado para ser funcional tanto para o lojista quanto para o comprador final.",
     status: "Em produção",
     tags: ["React", "TypeScript", "Node.js", "Prisma", "PostgreSQL"],
     image: catalogoImg,
     color: "from-green-500/20 to-emerald-900/40",
-    url: "https://www.catalogofacil.shop/"
+    url: "https://www.catalogofacil.shop/",
+    audience: "Pequenas e médias empresas que trabalham com vendas B2B — distribuidoras, representantes comerciais e atacadistas que precisam de uma forma mais organizada de compartilhar produtos com seus clientes.",
+    viableFor: "Qualquer negócio que venda para outras empresas por catálogo, especialmente quem hoje usa PDF, WhatsApp ou planilhas para enviar listas de produtos. A plataforma é pensada para quem quer evoluir para algo mais profissional sem abrir mão da simplicidade."
   },
   {
     id: "curriculoclaro",
     title: "Currículo Claro",
     context: "Gerador de currículos",
     description: "Ferramenta web para montar currículos claros, objetivos e ATS-friendly com foco em simplicidade e legibilidade.",
+    longDescription: "O Currículo Claro surgiu da observação de que a maioria das ferramentas de criação de currículos prioriza design excessivo em detrimento da leitura por sistemas ATS (Applicant Tracking System) — o software que filtra candidatos antes de chegarem ao recrutador humano.\n\nA ferramenta guia o usuário em seções claras — dados pessoais, experiências, formação e habilidades — com formatação limpa e exportação em PDF otimizado para triagem automatizada.\n\nA interface foi construída com React, TypeScript, Shadcn/UI e Tailwind CSS. Toda a geração do PDF acontece direto no navegador, sem necessidade de backend.",
+    status: "Em produção",
     tags: ["React", "TypeScript", "Shadcn/UI", "Tailwind CSS"],
     image: curriculoImg,
     color: "from-blue-500/20 to-cyan-900/40",
     url: "https://curriculo-claro.vercel.app/",
-    github: "https://github.com/pedrogamadev/Curriculo-Claro.git"
+    github: "https://github.com/pedrogamadev/Curriculo-Claro.git",
+    audience: "Profissionais em busca de recolocação ou novos desafios que querem garantir que seu currículo passe pelos filtros automáticos e chegue ao RH.",
+    viableFor: "Qualquer candidato, especialmente em tecnologia, administração e marketing, onde empresas maiores usam ATS para triagem. Ideal para quem não quer depender de designers ou templates pesados."
   },
   {
     id: "smp",
     title: "SMP",
     context: "Sistema administrativo",
     description: "Sistema web administrativo para monitorar projetos com autenticação, RBAC, CRUD e Kanban.",
+    longDescription: "O SMP (Sistema de Monitoramento de Projetos) é uma plataforma administrativa web criada para centralizar o acompanhamento de projetos em uma única interface.\n\nConta com autenticação de usuários, controle de acesso baseado em papéis (RBAC), CRUD completo de projetos e tarefas, e um board Kanban para visualizar o fluxo de trabalho. A arquitetura foi projetada para suportar múltiplos usuários com níveis de permissão distintos.\n\nConstruído com React no frontend e Node.js no backend, com TypeScript em toda a stack.",
+    status: "Em desenvolvimento",
     tags: ["React", "TypeScript", "Node.js", "RBAC"],
-    color: "from-amber-500/20 to-orange-900/40"
+    color: "from-amber-500/20 to-orange-900/40",
+    audience: "Gestores e líderes técnicos que precisam acompanhar o andamento de projetos e equipes sem depender de ferramentas caras ou complexas.",
+    viableFor: "Pequenas equipes de desenvolvimento, agências digitais e empresas que gerenciam projetos internos e querem uma visão centralizada do status de cada entrega."
   },
   {
     id: "norteia",
     title: "NorteIA",
     context: "SaaS comercial com IA",
     description: "SaaS multi-tenant de gestão comercial focado no ciclo Lead → Proposta → Cliente → Projeto, com geração de propostas por IA e base orientada à LGPD.",
+    longDescription: "O NorteIA é um SaaS de gestão comercial multi-tenant pensado para o fluxo real de trabalho de freelancers e pequenas agências: do primeiro contato com um lead até a conclusão do projeto.\n\nA plataforma cobre o ciclo completo — captura de leads, elaboração de propostas com apoio de IA para geração de texto, gestão de clientes e acompanhamento de projetos. Toda a base de dados foi estruturada com conformidade à LGPD, garantindo que dados de clientes sejam tratados de forma segura e transparente.\n\nA arquitetura multi-tenant isola completamente o ambiente de cada usuário, sem interferência entre contas.",
     subtitle: "Para freelancers, profissionais liberais e microagências.",
+    status: "Em desenvolvimento",
     tags: ["SaaS", "Multi-tenant", "IA", "LGPD"],
-    color: "from-violet-500/20 to-purple-900/40"
+    image: norteiaImg,
+    color: "from-violet-500/20 to-purple-900/40",
+    audience: "Freelancers, designers, desenvolvedores e microagências que hoje gerenciam seu comercial em planilhas, WhatsApp ou ferramentas genéricas e perdem o controle sobre o ciclo de vendas.",
+    viableFor: "Profissionais autônomos ou pequenas agências (1–10 pessoas) que precisam de uma ferramenta enxuta para gerenciar leads, propostas e projetos — sem pagar pelo excesso de funcionalidades de plataformas como HubSpot ou Pipedrive."
   }
 ]
 
