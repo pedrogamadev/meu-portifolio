@@ -1,103 +1,169 @@
 import { motion } from 'framer-motion'
 import { portfolioData } from '@/data'
 import { Section } from '../layout/Section'
-import { ExternalLink, Github, ChevronRight } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
+
+type Project = {
+  id: string
+  title: string
+  context: string
+  description: string
+  subtitle?: string
+  tags: string[]
+  image?: string
+  color: string
+  url?: string
+  github?: string
+}
 
 export function Projects() {
   const { language } = useLanguage()
-  const { projects } = portfolioData[language]
+  const projects = portfolioData[language].projects as unknown as Project[]
+
+  const featured = projects.find(p => p.id === 'catalogofacil')
+  const secondary = projects.filter(p => p.id !== 'catalogofacil')
+
   return (
     <Section id="projects">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-        <div className="space-y-4">
-          <h2 className="text-primary font-mono text-sm tracking-widest uppercase">
-            {language === 'pt' ? 'Projetos' : 'Projects'}
-          </h2>
-          <h3 className="text-4xl md:text-5xl font-bold tracking-tight">
-            {language === 'pt' ? 'Alguns trabalhos em destaque' : 'Some featured works'}
-          </h3>
-        </div>
-        <p className="text-muted-foreground max-w-md">
-          {language === 'pt' ? 
-            'Uma seleção de projetos que ajudam a mostrar como penso, quais tecnologias utilizo e que tipo de problema gosto de resolver.' : 
-            'A selection of projects that help show how I think, which technologies I use, and what kind of problems I like to solve.'}
+      <div className="mb-14 space-y-4">
+        <p className="text-primary font-mono text-xs tracking-widest uppercase">
+          {language === 'pt' ? 'Projetos' : 'Projects'}
+        </p>
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+          {language === 'pt' ? 'Projetos em destaque' : 'Featured projects'}
+        </h2>
+        <p className="text-muted-foreground max-w-lg leading-relaxed">
+          {language === 'pt'
+            ? 'Uma seleção de produtos e sistemas que mostram minha visão de produto, cuidado com interface e execução full-stack.'
+            : 'A selection of products and systems that show my product vision, attention to interface, and full-stack execution.'}
         </p>
       </div>
 
-      <div className="space-y-32">
-        {projects.map((project, i) => (
-          <motion.div
-            key={project.id}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-12 items-center`}
-          >
-            <div className="flex-1 w-full relative group">
-              <div className={`absolute inset-0 bg-gradient-to-br ${project.color} rounded-3xl blur-2xl opacity-50 group-hover:opacity-100 transition-opacity`} />
-              <div className="relative aspect-[16/10] bg-white/5 rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
-                {project.image ? (
-                  <img src={project.image} alt={`Capa do projeto ${project.title}`} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                ) : (
-                  <div className="absolute inset-4 rounded-xl bg-[#0a0a0a] border border-white/5 p-6 flex flex-col gap-4">
-                    <div className="flex gap-1.5">
-                      <div className="w-2 h-2 rounded-full bg-white/20" />
-                      <div className="w-16 h-2 rounded-full bg-white/10" />
-                    </div>
-                    <div className="flex-1 flex items-center justify-center">
-                      <span className="text-2xl font-bold font-mono opacity-20 select-none tracking-tighter uppercase transform -rotate-12 text-center">{project.title}</span>
-                    </div>
-                    <div className="grid grid-cols-3 gap-2">
-                      <div className="h-24 rounded-lg bg-white/[0.03]" />
-                      <div className="h-24 rounded-lg bg-white/[0.03]" />
-                      <div className="h-24 rounded-lg bg-white/[0.05]" />
-                    </div>
-                  </div>
-                )}
-
-                <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <a href={project.url || "#"} target={project.url ? "_blank" : undefined} rel={project.url ? "noopener noreferrer" : undefined} className="p-4 rounded-full bg-background border border-border shadow-xl transform scale-75 group-hover:scale-100 transition-transform font-bold flex items-center gap-2">
-                    {language === 'pt' ? 'Ver projeto' : 'View project'} <ChevronRight size={18} />
-                  </a>
+      {featured && (
+        <motion.article
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.5 }}
+          className="mb-5 border border-border overflow-hidden"
+        >
+          <div className="flex flex-col md:flex-row">
+            <div className="md:w-[56%] shrink-0 overflow-hidden bg-card">
+              {featured.image ? (
+                <img
+                  src={featured.image}
+                  alt={featured.title}
+                  className="w-full object-cover aspect-[16/10] md:h-full md:aspect-auto"
+                />
+              ) : (
+                <div className="w-full aspect-[16/10] md:h-full md:aspect-auto md:min-h-[300px] bg-card flex items-center justify-center">
+                  <span className="font-mono text-4xl font-bold opacity-[0.06] uppercase tracking-tighter select-none">
+                    {featured.title}
+                  </span>
                 </div>
-              </div>
+              )}
             </div>
 
-            <div className="flex-1 space-y-6">
-              <div className="space-y-2">
-                <p className="text-primary font-mono text-xs uppercase tracking-widest">{project.context}</p>
-                <h4 className="text-3xl font-bold tracking-tight">{project.title}</h4>
+            <div className="p-8 md:p-10 flex flex-col justify-between gap-8 border-t md:border-t-0 md:border-l border-border">
+              <div className="space-y-4">
+                <div className="flex items-center gap-2.5 flex-wrap">
+                  <span className="text-primary font-mono text-[10px] tracking-widest uppercase">
+                    {featured.context}
+                  </span>
+                  <span className="px-2 py-0.5 border border-primary/40 text-primary font-mono text-[9px] tracking-widest uppercase">
+                    {language === 'pt' ? 'Destaque' : 'Featured'}
+                  </span>
+                </div>
+                <h3 className="text-3xl md:text-4xl font-bold tracking-tight">{featured.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{featured.description}</p>
               </div>
 
-              <p className="text-muted-foreground text-lg leading-relaxed">
-                {project.description}
-              </p>
+              <div className="space-y-5">
+                <div className="flex flex-wrap gap-1.5">
+                  {featured.tags.map(tag => (
+                    <span
+                      key={tag}
+                      className="px-2.5 py-1 border border-border font-mono text-[10px] font-semibold uppercase tracking-wider text-muted-foreground"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                {featured.url && (
+                  <a
+                    href={featured.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-foreground hover:text-primary transition-colors group"
+                  >
+                    {language === 'pt' ? 'Ver projeto' : 'View project'}
+                    <ArrowUpRight
+                      size={15}
+                      className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                    />
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        </motion.article>
+      )}
 
-              <div className="flex flex-wrap gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {secondary.map((project, i) => (
+          <motion.article
+            key={project.id}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ delay: i * 0.07, duration: 0.4 }}
+            className="border border-border p-6 flex flex-col gap-4 hover:border-primary/30 transition-colors"
+          >
+            <div className="space-y-1">
+              <p className="text-primary font-mono text-[10px] tracking-widest uppercase">
+                {project.context}
+              </p>
+              <h4 className="text-xl font-bold tracking-tight">{project.title}</h4>
+            </div>
+
+            <p className="text-muted-foreground text-sm leading-relaxed flex-1">
+              {project.description}
+            </p>
+
+            {project.subtitle && (
+              <p className="text-muted-foreground/50 text-xs leading-relaxed">
+                {project.subtitle}
+              </p>
+            )}
+
+            <div className="space-y-3 mt-auto">
+              <div className="flex flex-wrap gap-1.5">
                 {project.tags.map(tag => (
-                  <span key={tag} className="px-3 py-1 rounded-md bg-white/5 border border-white/10 text-[10px] font-mono font-bold uppercase tracking-wider">
+                  <span
+                    key={tag}
+                    className="px-2 py-0.5 border border-border font-mono text-[9px] font-semibold uppercase tracking-wider text-muted-foreground"
+                  >
                     {tag}
                   </span>
                 ))}
               </div>
-
-              <div className="flex items-center gap-6 pt-4 border-t border-white/5">
-                {project.url && (
-                  <a href={project.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-foreground font-semibold hover:text-primary transition-colors">
-                    <ExternalLink size={18} />
-                    {language === 'pt' ? 'Ver demo' : 'View demo'}
-                  </a>
-                )}
-                {project.github && (
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-foreground font-semibold hover:text-primary transition-colors">
-                    <Github size={18} />
-                    {language === 'pt' ? 'Código-fonte' : 'Source code'}
-                  </a>
-                )}
-              </div>
+              {project.url && (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground hover:text-primary transition-colors group"
+                >
+                  {language === 'pt' ? 'Ver projeto' : 'View project'}
+                  <ArrowUpRight
+                    size={13}
+                    className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                  />
+                </a>
+              )}
             </div>
-          </motion.div>
+          </motion.article>
         ))}
       </div>
     </Section>

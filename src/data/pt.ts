@@ -56,31 +56,39 @@ export const projects = [
     id: "catalogofacil",
     title: "Catálogo Fácil",
     context: "SaaS de catálogo B2B",
-    description: "SaaS de catálogo B2B que permite cadastrar produtos e personalizar o próprio cardápio sem necessidade de desenvolvimento.",
+    description: "SaaS de catálogo B2B para cadastrar produtos, personalizar a vitrine e facilitar pedidos via catálogo digital com foco em uso simples e rápido.",
     tags: ["React", "TypeScript", "Node.js", "Prisma", "PostgreSQL"],
     image: catalogoImg,
     color: "from-green-500/20 to-emerald-900/40",
     url: "https://www.catalogofacil.shop/"
   },
   {
-    id: "supinoapp",
-    title: "Supino App",
-    context: "SaaS para Personal Trainers e Alunos",
-    description: "Plataforma focada em intermediar a relação entre professor e aluno para o cadastro e acompanhamento de treinos (em desenvolvimento).",
-    tags: ["React", "Tailwind CSS", "TypeScript", "Vite"],
-    color: "from-purple-500/20 to-violet-900/40",
-    url: "https://supino-app.vercel.app/"
-  },
-  {
     id: "curriculoclaro",
     title: "Currículo Claro",
-    context: "SaaS de Gerador de Currículos",
-    description: "Sistema simples sem servidor que faz perguntas objetivas ao usuário para criar um currículo já formatado, sem imagens (ATS-friendly) para passar melhor nas triagens automatizadas, focando na clareza e objetividade.",
+    context: "Gerador de currículos",
+    description: "Ferramenta web para montar currículos claros, objetivos e ATS-friendly com foco em simplicidade e legibilidade.",
     tags: ["React", "TypeScript", "Shadcn/UI", "Tailwind CSS"],
     image: curriculoImg,
     color: "from-blue-500/20 to-cyan-900/40",
     url: "https://curriculo-claro.vercel.app/",
     github: "https://github.com/pedrogamadev/Curriculo-Claro.git"
+  },
+  {
+    id: "smp",
+    title: "SMP",
+    context: "Sistema administrativo",
+    description: "Sistema web administrativo para monitorar projetos com autenticação, RBAC, CRUD e Kanban.",
+    tags: ["React", "TypeScript", "Node.js", "RBAC", "Kanban"],
+    color: "from-amber-500/20 to-orange-900/40"
+  },
+  {
+    id: "norteia",
+    title: "NorteIA",
+    context: "SaaS comercial com IA",
+    description: "SaaS multi-tenant de gestão comercial focado no ciclo Lead → Proposta → Cliente → Projeto. O diferencial é a geração de propostas com IA que aprende com o histórico do workspace, e conformidade LGPD desde o dia 1.",
+    subtitle: "Para freelancers, profissionais liberais e microagências que hoje gerenciam clientes em planilhas, WhatsApp e Google Docs fragmentados.",
+    tags: ["SaaS", "Multi-tenant", "IA", "LGPD"],
+    color: "from-violet-500/20 to-purple-900/40"
   }
 ]
 

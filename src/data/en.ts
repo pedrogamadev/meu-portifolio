@@ -57,31 +57,39 @@ export const projects = [
     id: "catalogofacil",
     title: "Catálogo Fácil",
     context: "B2B Catalog SaaS",
-    description: "B2B catalog SaaS that allows businesses to register products and customize their own menu without needing development.",
+    description: "B2B catalog SaaS to register products, customize the storefront, and streamline orders via digital catalog with a focus on simplicity and speed.",
     tags: ["React", "TypeScript", "Node.js", "Prisma", "PostgreSQL"],
     image: catalogoImg,
     color: "from-green-500/20 to-emerald-900/40",
     url: "https://www.catalogofacil.shop/"
   },
   {
-    id: "supinoapp",
-    title: "Supino App",
-    context: "SaaS for Personal Trainers and Students",
-    description: "Platform focused on intermediating the relationship between teacher and student for registering and tracking workouts (in development).",
-    tags: ["React", "Tailwind CSS", "TypeScript", "Vite"],
-    color: "from-purple-500/20 to-violet-900/40",
-    url: "https://supino-app.vercel.app/"
-  },
-  {
     id: "curriculoclaro",
     title: "Currículo Claro",
-    context: "Resume Generator SaaS",
-    description: "Simple serverless system that asks objective questions to the user to create an already formatted resume, without images (ATS-friendly) to pass better in automated screenings, focusing on clarity and objectivity.",
+    context: "Resume Generator",
+    description: "Web tool to build clear, objective, ATS-friendly resumes focused on simplicity and readability.",
     tags: ["React", "TypeScript", "Shadcn/UI", "Tailwind CSS"],
     image: curriculoImg,
     color: "from-blue-500/20 to-cyan-900/40",
     url: "https://curriculo-claro.vercel.app/",
     github: "https://github.com/pedrogamadev/Curriculo-Claro.git"
+  },
+  {
+    id: "smp",
+    title: "SMP",
+    context: "Admin system",
+    description: "Web admin system to monitor projects with authentication, RBAC, CRUD, and Kanban.",
+    tags: ["React", "TypeScript", "Node.js", "RBAC", "Kanban"],
+    color: "from-amber-500/20 to-orange-900/40"
+  },
+  {
+    id: "norteia",
+    title: "NorteIA",
+    context: "Commercial SaaS with AI",
+    description: "Multi-tenant commercial management SaaS focused on the Lead → Proposal → Client → Project cycle. The differentiator is AI-powered proposal generation that learns from workspace history, with LGPD compliance from day one.",
+    subtitle: "For freelancers, liberal professionals, and micro-agencies currently managing clients across spreadsheets, WhatsApp, and fragmented Google Docs.",
+    tags: ["SaaS", "Multi-tenant", "AI", "LGPD"],
+    color: "from-violet-500/20 to-purple-900/40"
   }
 ]
 
