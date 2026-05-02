@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowLeft, ArrowUpRight, Github, ChevronLeft, ChevronRight } from 'lucide-react'
 import { portfolioData } from '@/data'
+import { getProjectImages } from '@/data/projectImages'
 import { useLanguage } from '@/contexts/LanguageContext'
 import type { Project } from '@/data/pt'
 
@@ -22,13 +23,13 @@ function ImageCarousel({ images, title }: { images: string[]; title: string }) {
   }
 
   return (
-    <div className="border border-border overflow-hidden relative">
+    <div className="border border-border overflow-hidden relative bg-card/30 md:h-[500px]">
       <AnimatePresence mode="wait" custom={direction}>
         <motion.img
           key={current}
           src={images[current]}
           alt={`${title} ${current + 1}`}
-          className="w-full object-cover block"
+          className="w-full block object-contain md:h-full"
           custom={direction}
           variants={{
             enter: (dir: number) => ({ x: dir > 0 ? '3%' : '-3%', opacity: 0 }),
@@ -93,6 +94,7 @@ export function ProjectDetail() {
     )
   }
 
+  const images = getProjectImages(project.id)
   const paragraphs = project.longDescription?.split('\n\n') ?? [project.description]
 
   return (
@@ -149,14 +151,14 @@ export function ProjectDetail() {
         </motion.div>
 
         {/* Image carousel */}
-        {project.images && project.images.length > 0 && (
+        {images.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15 }}
             className="mt-10"
           >
-            <ImageCarousel images={project.images} title={project.title} />
+            <ImageCarousel images={images} title={project.title} />
           </motion.div>
         )}
 

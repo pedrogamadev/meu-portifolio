@@ -1,8 +1,4 @@
 import { Globe, LayoutTemplate, MonitorSmartphone, Zap, Layers, Container } from 'lucide-react'
-import catalogoImg1 from '@/assets/projetos/catalogofacil/1.png'
-import curriculoImg1 from '@/assets/projetos/curriculoclaro/1.png'
-import norteiaImg1 from '@/assets/projetos/norteia/1.png'
-
 export interface Project {
   id: string
   title: string
@@ -12,7 +8,6 @@ export interface Project {
   subtitle?: string
   status?: string
   tags: string[]
-  images?: string[]
   color: string
   url?: string
   github?: string
@@ -78,7 +73,6 @@ export const projects: Project[] = [
     longDescription: "O Catálogo Fácil nasceu para resolver um problema real de pequenas empresas que trabalham com vendas B2B: a dificuldade de gerenciar e compartilhar catálogos de produtos de forma organizada e profissional.\n\nA plataforma permite que lojistas cadastrem produtos, personalizem a vitrine com sua identidade visual e compartilhem um link de catálogo digital com seus clientes. Os compradores navegam pelo catálogo e enviam pedidos de forma simples, sem precisar instalar nenhum aplicativo.\n\nO backend foi construído com Node.js e Prisma ORM sobre PostgreSQL, com arquitetura multi-tenant — cada loja tem seu espaço isolado. O frontend em React com TypeScript foi pensado para ser funcional tanto para o lojista quanto para o comprador final.",
     status: "Em produção",
     tags: ["React", "TypeScript", "Node.js", "Prisma", "PostgreSQL"],
-    images: [catalogoImg1],
     color: "from-green-500/20 to-emerald-900/40",
     url: "https://www.catalogofacil.shop/",
     audience: "Pequenas e médias empresas que trabalham com vendas B2B — distribuidoras, representantes comerciais e atacadistas que precisam de uma forma mais organizada de compartilhar produtos com seus clientes.",
@@ -92,7 +86,6 @@ export const projects: Project[] = [
     longDescription: "O Currículo Claro surgiu da observação de que a maioria das ferramentas de criação de currículos prioriza design excessivo em detrimento da leitura por sistemas ATS (Applicant Tracking System) — o software que filtra candidatos antes de chegarem ao recrutador humano.\n\nA ferramenta guia o usuário em seções claras — dados pessoais, experiências, formação e habilidades — com formatação limpa e exportação em PDF otimizado para triagem automatizada.\n\nA interface foi construída com React, TypeScript, Shadcn/UI e Tailwind CSS. Toda a geração do PDF acontece direto no navegador, sem necessidade de backend.",
     status: "Em produção",
     tags: ["React", "TypeScript", "Shadcn/UI", "Tailwind CSS"],
-    images: [curriculoImg1],
     color: "from-blue-500/20 to-cyan-900/40",
     url: "https://curriculo-claro.vercel.app/",
     github: "https://github.com/pedrogamadev/Curriculo-Claro.git",
@@ -120,7 +113,6 @@ export const projects: Project[] = [
     subtitle: "Para freelancers, profissionais liberais e microagências.",
     status: "Em desenvolvimento",
     tags: ["SaaS", "Multi-tenant", "IA", "LGPD"],
-    images: [norteiaImg1],
     color: "from-violet-500/20 to-purple-900/40",
     audience: "Freelancers, designers, desenvolvedores e microagências que hoje gerenciam seu comercial em planilhas, WhatsApp ou ferramentas genéricas e perdem o controle sobre o ciclo de vendas.",
     viableFor: "Profissionais autônomos ou pequenas agências (1–10 pessoas) que precisam de uma ferramenta enxuta para gerenciar leads, propostas e projetos — sem pagar pelo excesso de funcionalidades de plataformas como HubSpot ou Pipedrive."

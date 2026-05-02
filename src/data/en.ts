@@ -1,7 +1,4 @@
 import { Globe, LayoutTemplate, MonitorSmartphone, Zap, Layers, Container } from 'lucide-react'
-import catalogoImg1 from '@/assets/projetos/catalogofacil/1.png'
-import curriculoImg1 from '@/assets/projetos/curriculoclaro/1.png'
-import norteiaImg1 from '@/assets/projetos/norteia/1.png'
 import type { Experience, Project } from './pt'
 
 export const personalInfo = {
@@ -62,7 +59,6 @@ export const projects: Project[] = [
     longDescription: "Catálogo Fácil was built to solve a real problem for small businesses working with B2B sales: the difficulty of managing and sharing product catalogs in an organized and professional way.\n\nThe platform lets store owners register products, customize the storefront with their brand, and share a digital catalog link with their clients. Buyers browse the catalog and place orders simply, without installing any app.\n\nThe backend was built with Node.js and Prisma ORM on PostgreSQL, with a multi-tenant architecture — each store has its isolated space. The React + TypeScript frontend was designed to work well for both the store owner and the end buyer.",
     status: "Live",
     tags: ["React", "TypeScript", "Node.js", "Prisma", "PostgreSQL"],
-    images: [catalogoImg1],
     color: "from-green-500/20 to-emerald-900/40",
     url: "https://www.catalogofacil.shop/",
     audience: "Small and medium businesses working with B2B sales — distributors, sales reps, and wholesalers who need a more organized way to share products with their clients.",
@@ -76,7 +72,6 @@ export const projects: Project[] = [
     longDescription: "Currículo Claro came from observing that most resume-building tools prioritize excessive design over readability by ATS (Applicant Tracking System) software — the tool that filters candidates before they reach a human recruiter.\n\nThe tool guides users through clear sections — personal info, experience, education, and skills — with clean formatting and PDF export optimized for automated screening.\n\nThe interface was built with React, TypeScript, Shadcn/UI, and Tailwind CSS. All PDF generation happens in the browser, with no backend required.",
     status: "Live",
     tags: ["React", "TypeScript", "Shadcn/UI", "Tailwind CSS"],
-    images: [curriculoImg1],
     color: "from-blue-500/20 to-cyan-900/40",
     url: "https://curriculo-claro.vercel.app/",
     github: "https://github.com/pedrogamadev/Curriculo-Claro.git",
@@ -104,7 +99,6 @@ export const projects: Project[] = [
     subtitle: "For freelancers, liberal professionals, and micro-agencies.",
     status: "In development",
     tags: ["SaaS", "Multi-tenant", "AI", "LGPD"],
-    images: [norteiaImg1],
     color: "from-violet-500/20 to-purple-900/40",
     audience: "Freelancers, designers, developers, and micro-agencies currently managing their sales pipeline in spreadsheets, WhatsApp, or generic tools and losing track of the deal cycle.",
     viableFor: "Solo professionals or small agencies (1–10 people) who need a lean, integrated tool to manage leads, proposals, and projects — without paying for the excess features of platforms like HubSpot or Pipedrive."

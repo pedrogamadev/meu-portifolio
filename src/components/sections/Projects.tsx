@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { portfolioData } from '@/data'
+import { getProjectImages } from '@/data/projectImages'
 import { Section } from '../layout/Section'
 import { ArrowUpRight } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
@@ -12,6 +13,7 @@ export function Projects() {
 
   const featured = projects.find(p => p.id === 'catalogofacil')
   const secondary = projects.filter(p => p.id !== 'catalogofacil')
+  const featuredCover = featured ? getProjectImages(featured.id)[0] : undefined
 
   return (
     <Section id="projects">
@@ -43,9 +45,9 @@ export function Projects() {
         >
           <div className="flex flex-col md:flex-row h-full">
             <div className="md:w-[52%] shrink-0 overflow-hidden bg-card">
-              {featured.images?.[0] ? (
+              {featuredCover ? (
                 <img
-                  src={featured.images[0]}
+                  src={featuredCover}
                   alt={featured.title}
                   className="w-full object-cover aspect-[16/10] md:h-full md:aspect-auto"
                 />
