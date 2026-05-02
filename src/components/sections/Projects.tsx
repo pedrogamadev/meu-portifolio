@@ -1,11 +1,94 @@
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { useRef } from 'react'
 import { portfolioData } from '@/data'
 import { getProjectImages } from '@/data/projectImages'
 import { Section } from '../layout/Section'
 import { ArrowUpRight } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
 import type { Project } from '@/data/pt'
+
+function SecondaryCard({ project, index }: { project: Project; index: number }) {
+  const cover = getProjectImages(project.id)[0]
+  const ref = useRef<HTMLElement>(null)
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start end', 'end start'],
+  })
+
+  const imageY = useTransform(scrollYProgress, [0, 1], [40, -40])
+
+  return (
+    <motion.article
+      ref={ref}
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ delay: index * 0.07, duration: 0.35 }}
+      className="overflow-hidden border border-border group hover:border-primary/25 transition-colors"
+    >
+      <Link to={`/projeto/${project.id}`} className="block">
+
+        {/* MOBILE: imagem em cima + conteúdo embaixo (estilo catálogo fácil) */}
+        <div className="md:hidden">
+          <div className="relative overflow-hidden aspect-[16/10]">
+            {cover ? (
+              <motion.img
+                src={cover}
+                alt={project.title}
+                className="absolute left-0 w-full object-cover object-top"
+                style={{ height: '130%', top: '-15%', y: imageY }}
+              />
+            ) : (
+              <div className="absolute inset-0 bg-card" />
+            )}
+          </div>
+          <div className="p-5 space-y-1.5 border-t border-border">
+            <p className="text-primary font-mono text-[9px] tracking-widest uppercase">
+              {project.context}
+            </p>
+            <h4 className="text-base font-bold tracking-tight">{project.title}</h4>
+            <p className="text-muted-foreground text-xs leading-relaxed line-clamp-3">
+              {project.description}
+            </p>
+          </div>
+        </div>
+
+        {/* DESKTOP: imagem como fundo com gradiente */}
+        <div className="hidden md:block relative h-[280px]">
+          {cover ? (
+            <div className="absolute inset-0 overflow-hidden">
+              <motion.img
+                src={cover}
+                alt={project.title}
+                className="absolute left-0 w-full object-cover object-top"
+                style={{ height: '130%', top: '-15%', y: imageY }}
+              />
+            </div>
+          ) : (
+            <div className="absolute inset-0 bg-card" />
+          )}
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/5" />
+
+          <div className="absolute bottom-0 left-0 right-0 p-5 space-y-1.5 translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+            <p className="text-primary font-mono text-[9px] tracking-widest uppercase">
+              {project.context}
+            </p>
+            <h4 className="text-base font-bold tracking-tight text-white leading-snug">
+              {project.title}
+            </h4>
+            <p className="text-white/60 text-xs leading-relaxed line-clamp-2">
+              {project.description}
+            </p>
+          </div>
+        </div>
+
+      </Link>
+    </motion.article>
+  )
+}
 
 export function Projects() {
   const { language } = useLanguage()
@@ -17,7 +100,7 @@ export function Projects() {
 
   return (
     <Section id="projects">
-      {/* Header — 2 colunas no desktop */}
+      {/* Header */}
       <div className="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
         <div className="space-y-2 shrink-0">
           <p className="text-primary font-mono text-xs tracking-widest uppercase">
@@ -34,7 +117,7 @@ export function Projects() {
         </p>
       </div>
 
-      {/* Card principal */}
+      {/* Featured card — unchanged */}
       {featured && (
         <motion.article
           initial={{ opacity: 0, y: 24 }}
@@ -129,67 +212,10 @@ export function Projects() {
         </motion.article>
       )}
 
-      {/* Grid secundária */}
+      {/* Secondary grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {secondary.map((project, i) => (
-          <motion.article
-            key={project.id}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ delay: i * 0.07, duration: 0.35 }}
-            className="border border-border p-5 flex flex-col gap-3 hover:border-primary/25 transition-colors"
-          >
-            <div>
-              <p className="text-primary font-mono text-[9px] tracking-widest uppercase mb-1">
-                {project.context}
-              </p>
-              <h4 className="text-lg font-bold tracking-tight">{project.title}</h4>
-            </div>
-
-            <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 flex-1">
-              {project.description}
-            </p>
-
-            <div className="mt-auto pt-3 border-t border-border/50 space-y-2.5">
-              <div className="flex flex-wrap gap-1">
-                {project.tags.map(tag => (
-                  <span
-                    key={tag}
-                    className="px-1.5 py-0.5 border border-border/60 font-mono text-[8px] font-semibold uppercase tracking-wider text-muted-foreground/60"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <div className="flex items-center gap-3 flex-wrap">
-                <Link
-                  to={`/projeto/${project.id}`}
-                  className="inline-flex items-center gap-1 text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors group"
-                >
-                  {language === 'pt' ? 'Ver detalhes' : 'Details'}
-                  <ArrowUpRight
-                    size={12}
-                    className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                  />
-                </Link>
-                {project.url && (
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-foreground hover:text-primary transition-colors group"
-                  >
-                    {language === 'pt' ? 'Ver projeto' : 'View project'}
-                    <ArrowUpRight
-                      size={12}
-                      className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                    />
-                  </a>
-                )}
-              </div>
-            </div>
-          </motion.article>
+          <SecondaryCard key={project.id} project={project} index={i} />
         ))}
       </div>
     </Section>
