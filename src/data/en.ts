@@ -56,13 +56,40 @@ export const projects: Project[] = [
     title: "Catálogo Fácil",
     context: "B2B Catalog SaaS",
     description: "B2B catalog SaaS to register products, customize the storefront, and streamline orders via digital catalog with a focus on simplicity and speed.",
-    longDescription: "Catálogo Fácil was built to solve a real problem for small businesses working with B2B sales: the difficulty of managing and sharing product catalogs in an organized and professional way.\n\nThe platform lets store owners register products, customize the storefront with their brand, and share a digital catalog link with their clients. Buyers browse the catalog and place orders simply, without installing any app.\n\nThe backend was built with Node.js and Prisma ORM on PostgreSQL, with a multi-tenant architecture — each store has its isolated space. The React + TypeScript frontend was designed to work well for both the store owner and the end buyer.",
+    longDescription: `Catálogo Fácil is a multi-tenant B2B SaaS for digitizing catalogs, focused on small and medium-sized businesses that sell to other companies. The solution was designed to clearly separate the operations of each store (tenant), ensuring data isolation, scalability, and centralized management.
+
+## Stack and Architecture
+- Frontend: React + TypeScript, with an administrative interface for managing catalogs, themes, teams, and settings.
+- Backend: Node.js with Prisma ORM, organized by domain modules (catalog, delivery, users, billing, and administration).
+- Database: PostgreSQL, with modeling geared towards multi-tenancy and relationships between stores, items, categories, subscriptions, and transactions.
+- Delivery: REST API-oriented architecture, with authentication, permission control, and integration between admin/master dashboards and the public catalog.
+
+## Key Features
+- Complete catalog management (categories, items, availability, visual customization, and access QR Code).
+- Catalog mode and delivery mode with cart and order submission via WhatsApp.
+- Administrative area with operational indicators and store rules configuration.
+- Subscription management with billing history and status tracking in the dashboard.
+
+## Payments and Billing
+- Integration of recurring billing with **Karvix PAY API** for payments via **PIX**.
+- Subscription flow with trial, pending billing, active, and renewal states.
+- Transaction logging for auditing, traceability, and operational support.
+
+## Technical Highlights
+- Structure prepared for SaaS scale (multi-tenant with customer isolation).
+- Business rules centralized in the backend for consistency between dashboards and the public catalog.
+- Focus on usability: simple operation for the store owner and quick setup of the digital catalog.`,
     status: "Live",
     tags: ["React", "TypeScript", "Node.js", "Prisma", "PostgreSQL"],
     color: "from-green-500/20 to-emerald-900/40",
     url: "https://www.catalogofacil.shop/",
     audience: "Small and medium businesses working with B2B sales — distributors, sales reps, and wholesalers who need a more organized way to share products with their clients.",
-    viableFor: "Any business that sells to other companies via catalog, especially those currently using PDFs, WhatsApp, or spreadsheets to send product lists. Built for those who want to move to something more professional without losing simplicity."
+    viableFor: "Any business that sells to other companies via catalog, especially those currently using PDFs, WhatsApp, or spreadsheets to send product lists. Built for those who want to move to something more professional without losing simplicity.",
+    acknowledgments: {
+      name: "Flávia Regina",
+      github: "flaviamarinho10",
+      text: "I want to thank @flaviamarinho10 for her contribution to this project; she is my girlfriend and helped me with the visual development, ideas, and code."
+    }
   },
   {
     id: "curriculoclaro",

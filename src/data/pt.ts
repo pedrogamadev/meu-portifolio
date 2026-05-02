@@ -13,6 +13,11 @@ export interface Project {
   github?: string
   audience?: string
   viableFor?: string
+  acknowledgments?: {
+    name: string;
+    github: string;
+    text: string;
+  };
 }
 
 export const personalInfo = {
@@ -70,13 +75,40 @@ export const projects: Project[] = [
     title: "Catálogo Fácil",
     context: "SaaS de catálogo B2B",
     description: "SaaS de catálogo B2B para cadastrar produtos, personalizar a vitrine e facilitar pedidos via catálogo digital com foco em uso simples e rápido.",
-    longDescription: "O Catálogo Fácil nasceu para resolver um problema real de pequenas empresas que trabalham com vendas B2B: a dificuldade de gerenciar e compartilhar catálogos de produtos de forma organizada e profissional.\n\nA plataforma permite que lojistas cadastrem produtos, personalizem a vitrine com sua identidade visual e compartilhem um link de catálogo digital com seus clientes. Os compradores navegam pelo catálogo e enviam pedidos de forma simples, sem precisar instalar nenhum aplicativo.\n\nO backend foi construído com Node.js e Prisma ORM sobre PostgreSQL, com arquitetura multi-tenant — cada loja tem seu espaço isolado. O frontend em React com TypeScript foi pensado para ser funcional tanto para o lojista quanto para o comprador final.",
+    longDescription: `O Catálogo Fácil é um SaaS B2B multi-tenant para digitalização de catálogos, com foco em pequenos e médios negócios que vendem para outras empresas. A solução foi projetada para separar claramente a operação de cada loja (tenant), garantindo isolamento de dados, escalabilidade e gestão centralizada.
+
+## Stack e arquitetura
+- Frontend: React + TypeScript, com interface administrativa para gestão de catálogo, tema, equipe e configurações.
+- Backend: Node.js com Prisma ORM, organizado por módulos de domínio (catálogo, delivery, usuários, billing e administração).
+- Banco de dados: PostgreSQL, com modelagem voltada para multi-tenant e relacionamento entre lojas, itens, categorias, assinaturas e transações.
+- Entrega: arquitetura orientada a APIs REST, com autenticação, controle de permissões e integração entre painéis admin/master e catálogo público.
+
+## Funcionalidades principais
+- Gestão completa de catálogo (categorias, itens, disponibilidade, personalização visual e QR Code de acesso).
+- Modo catálogo e modo delivery com carrinho e envio de pedido via WhatsApp.
+- Área administrativa com indicadores operacionais e configuração de regras da loja.
+- Gestão de assinatura com histórico de cobranças e acompanhamento de status no painel.
+
+## Pagamentos e billing
+- Integração de cobrança recorrente com **API Karvix PAY** para pagamentos via **PIX**.
+- Fluxo de assinatura com estados de teste, cobrança pendente, ativo e renovação.
+- Registro de transações para auditoria, rastreabilidade e suporte operacional.
+
+## Diferenciais técnicos
+- Estrutura preparada para escala SaaS (multi-tenant com isolamento por cliente).
+- Regras de negócio centralizadas no backend para consistência entre painéis e catálogo público.
+- Foco em usabilidade: operação simples para o lojista e configuração rápida de catálogo digital.`,
     status: "Em produção",
     tags: ["React", "TypeScript", "Node.js", "Prisma", "PostgreSQL"],
     color: "from-green-500/20 to-emerald-900/40",
     url: "https://www.catalogofacil.shop/",
     audience: "Pequenas e médias empresas que trabalham com vendas B2B — distribuidoras, representantes comerciais e atacadistas que precisam de uma forma mais organizada de compartilhar produtos com seus clientes.",
-    viableFor: "Qualquer negócio que venda para outras empresas por catálogo, especialmente quem hoje usa PDF, WhatsApp ou planilhas para enviar listas de produtos. A plataforma é pensada para quem quer evoluir para algo mais profissional sem abrir mão da simplicidade."
+    viableFor: "Qualquer negócio que venda para outras empresas por catálogo, especialmente quem hoje usa PDF, WhatsApp ou planilhas para enviar listas de produtos. A plataforma é pensada para quem quer evoluir para algo mais profissional sem abrir mão da simplicidade.",
+    acknowledgments: {
+      name: "Flávia Regina",
+      github: "flaviamarinho10",
+      text: "Preciso agradecer a @flaviamarinho10 pela contribuição nesse projeto, ela é minha namorada e me ajudou no desenvolvimento visual, ideias e códigos."
+    }
   },
   {
     id: "curriculoclaro",
