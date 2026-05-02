@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import { Header } from './components/layout/Header'
 import { Footer } from './components/layout/Footer'
 import { CustomCursor } from './components/layout/CustomCursor'
@@ -13,6 +14,23 @@ import { ProjectDetail } from './pages/ProjectDetail'
 import { LanguageProvider } from './contexts/LanguageContext'
 
 function HomePage() {
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '')
+      // Pequeno atraso para garantir que a página carregou
+      setTimeout(() => {
+        const element = document.getElementById(id)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 100)
+    } else {
+      window.scrollTo(0, 0)
+    }
+  }, [location])
+
   return (
     <main>
       <Hero />

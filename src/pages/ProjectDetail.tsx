@@ -1,6 +1,6 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 import { ArrowLeft, ArrowUpRight, Github, ChevronLeft, ChevronRight } from 'lucide-react'
 import { portfolioData } from '@/data'
 import { getProjectImages } from '@/data/projectImages'
@@ -75,6 +75,25 @@ export function ProjectDetail() {
   const projects = portfolioData[language].projects as Project[]
   const project = projects.find(p => p.id === id)
 
+  const { scrollY } = useScroll()
+  const [isScrollingDown, setIsScrollingDown] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
+  const navigate = useNavigate()
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious()
+    if (previous !== undefined && latest > previous && latest > 100) {
+      setIsScrollingDown(true)
+    } else {
+      setIsScrollingDown(false)
+    }
+  })
+
+  const handleBack = (e: React.MouseEvent) => {
+    e.preventDefault()
+    navigate('/#projects')
+  }
+
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [id])
@@ -99,23 +118,38 @@ export function ProjectDetail() {
   const paragraphs = project.longDescription?.split('\n\n') ?? [project.description]
 
   return (
-    <main className="min-h-screen">
-      <div className="max-w-5xl mx-auto px-6 pt-32 pb-24">
+    <main className="min-h-screen relative">
+      {/* Botão voltar fixo (Mobile + Desktop) */}
+      <motion.a
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.3, delay: 0.5 }}
+        href="/#projects"
+        onClick={handleBack}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        className="fixed top-24 md:top-28 right-5 md:right-8 z-50 rounded-full shadow-lg flex items-center justify-center border border-[#D95A3A]/20 overflow-hidden transition-transform hover:scale-105 cursor-pointer"
+        style={{ backgroundColor: '#D95A3A', color: '#1B1713', height: '36px' }}
+      >
+        <div className="flex items-center px-4 h-full">
+          <ArrowLeft size={14} className="shrink-0" />
+          <AnimatePresence initial={false}>
+            {(!isScrollingDown || isHovered) && (
+              <motion.span
+                initial={{ width: 0, opacity: 0, marginLeft: 0 }}
+                animate={{ width: "auto", opacity: 1, marginLeft: 8 }}
+                exit={{ width: 0, opacity: 0, marginLeft: 0 }}
+                transition={{ duration: 0.2 }}
+                className="text-[11px] font-mono tracking-widest uppercase font-bold whitespace-nowrap overflow-hidden"
+              >
+                {language === 'pt' ? 'Voltar' : 'Back'}
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </div>
+      </motion.a>
 
-        {/* Back nav */}
-        <motion.div
-          initial={{ opacity: 0, x: -8 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <a
-            href="/#projects"
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors font-mono text-[11px] uppercase tracking-widest group"
-          >
-            <ArrowLeft size={11} className="group-hover:-translate-x-0.5 transition-transform" />
-            {language === 'pt' ? 'Projetos' : 'Projects'}
-          </a>
-        </motion.div>
+      <div className="max-w-5xl mx-auto px-6 pt-32 pb-24">
 
         {/* Project header */}
         <motion.div

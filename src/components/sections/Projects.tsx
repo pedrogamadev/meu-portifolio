@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useRef, useState } from 'react'
 import { portfolioData } from '@/data'
 import { getProjectImages } from '@/data/projectImages'
@@ -65,12 +65,14 @@ function SecondaryCard({ project, index }: { project: Project; index: number }) 
 
 function MobileProjectCard({ project, isActive, setActiveId, language }: { project: Project; isActive: boolean; setActiveId: (id: string) => void; language: string }) {
   const cover = getProjectImages(project.id)[0]
+  const navigate = useNavigate()
 
   return (
     <motion.div
       onViewportEnter={() => setActiveId(project.id)}
       viewport={{ margin: '-40% 0px -40% 0px' }}
-      className="mb-12 last:mb-0 relative"
+      className="mb-12 last:mb-0 relative cursor-pointer group/card"
+      onClick={() => navigate(`/projeto/${project.id}`)}
     >
       {/* Imagem do Projeto (O interior da torradeira) */}
       <AnimatePresence initial={false}>
@@ -131,16 +133,15 @@ function MobileProjectCard({ project, isActive, setActiveId, language }: { proje
           </div>
 
           <div className="flex items-center justify-between gap-4 pt-4 mt-4 border-t border-border/50">
-            <Link
-              to={`/projeto/${project.id}`}
-              className="inline-flex items-center gap-1 text-sm font-semibold text-foreground hover:text-primary transition-colors group"
+            <span
+              className="inline-flex items-center gap-1 text-sm font-semibold text-foreground group-hover/card:text-primary transition-colors group"
             >
               {language === 'pt' ? 'Ver detalhes' : 'Details'}
               <ArrowUpRight
                 size={14}
-                className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                className="group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5 transition-transform"
               />
-            </Link>
+            </span>
           </div>
         </div>
       </div>
@@ -157,6 +158,7 @@ export function Projects() {
   const featuredCover = featured ? getProjectImages(featured.id)[0] : undefined
   
   const [activeMobileId, setActiveMobileId] = useState(projects[0]?.id)
+  const navigate = useNavigate()
 
   return (
     <Section id="projects">
@@ -199,7 +201,8 @@ export function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.45 }}
-            className="mb-4 border border-border overflow-hidden h-[340px]"
+            className="mb-4 border border-border overflow-hidden h-[340px] cursor-pointer group/card hover:border-primary/25 transition-colors"
+            onClick={() => navigate(`/projeto/${featured.id}`)}
           >
             <div className="flex flex-row h-full">
               <div className="w-[52%] shrink-0 overflow-hidden bg-card">
@@ -255,21 +258,21 @@ export function Projects() {
                       </span>
                     )}
                     <div className="ml-auto flex items-center gap-4">
-                      <Link
-                        to={`/projeto/${featured.id}`}
-                        className="inline-flex items-center gap-1 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors group"
+                      <span
+                        className="inline-flex items-center gap-1 text-sm font-semibold text-muted-foreground group-hover/card:text-foreground transition-colors group"
                       >
                         {language === 'pt' ? 'Ver detalhes' : 'Details'}
                         <ArrowUpRight
                           size={14}
-                          className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                          className="group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5 transition-transform"
                         />
-                      </Link>
+                      </span>
                       {featured.url && (
                         <a
                           href={featured.url}
                           target="_blank"
                           rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
                           className="inline-flex items-center gap-1 text-sm font-semibold text-foreground hover:text-primary transition-colors group"
                         >
                           {language === 'pt' ? 'Ver projeto' : 'View project'}
