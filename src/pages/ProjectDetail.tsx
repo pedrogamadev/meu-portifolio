@@ -1,10 +1,71 @@
 import { useParams } from 'react-router-dom'
-import { useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { ArrowLeft, ArrowUpRight, Github } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowLeft, ArrowUpRight, Github, ChevronLeft, ChevronRight } from 'lucide-react'
 import { portfolioData } from '@/data'
 import { useLanguage } from '@/contexts/LanguageContext'
 import type { Project } from '@/data/pt'
+
+function ImageCarousel({ images, title }: { images: string[]; title: string }) {
+  const [current, setCurrent] = useState(0)
+  const [direction, setDirection] = useState(0)
+
+  if (!images || images.length === 0) return null
+
+  const prev = () => {
+    setDirection(-1)
+    setCurrent(i => (i - 1 + images.length) % images.length)
+  }
+  const next = () => {
+    setDirection(1)
+    setCurrent(i => (i + 1) % images.length)
+  }
+
+  return (
+    <div className="border border-border overflow-hidden relative">
+      <AnimatePresence mode="wait" custom={direction}>
+        <motion.img
+          key={current}
+          src={images[current]}
+          alt={`${title} ${current + 1}`}
+          className="w-full object-cover block"
+          custom={direction}
+          variants={{
+            enter: (dir: number) => ({ x: dir > 0 ? '3%' : '-3%', opacity: 0 }),
+            center: { x: 0, opacity: 1 },
+            exit: (dir: number) => ({ x: dir > 0 ? '-3%' : '3%', opacity: 0 }),
+          }}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{ duration: 0.22, ease: 'easeInOut' }}
+        />
+      </AnimatePresence>
+
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={prev}
+            aria-label="Anterior"
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-background/70 border border-border/60 text-foreground hover:text-primary hover:border-primary/40 transition-colors backdrop-blur-sm"
+          >
+            <ChevronLeft size={15} />
+          </button>
+          <button
+            onClick={next}
+            aria-label="Próxima"
+            className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-background/70 border border-border/60 text-foreground hover:text-primary hover:border-primary/40 transition-colors backdrop-blur-sm"
+          >
+            <ChevronRight size={15} />
+          </button>
+          <div className="absolute bottom-3 right-3 font-mono text-[10px] text-foreground/60 bg-background/60 backdrop-blur-sm px-2 py-0.5 border border-border/40">
+            {current + 1} / {images.length}
+          </div>
+        </>
+      )}
+    </div>
+  )
+}
 
 export function ProjectDetail() {
   const { id } = useParams<{ id: string }>()
@@ -87,19 +148,15 @@ export function ProjectDetail() {
           )}
         </motion.div>
 
-        {/* Image */}
-        {project.image && (
+        {/* Image carousel */}
+        {project.images && project.images.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="mt-10 border border-border overflow-hidden"
+            className="mt-10"
           >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full object-cover"
-            />
+            <ImageCarousel images={project.images} title={project.title} />
           </motion.div>
         )}
 

@@ -43,9 +43,9 @@ export function Projects() {
         >
           <div className="flex flex-col md:flex-row h-full">
             <div className="md:w-[52%] shrink-0 overflow-hidden bg-card">
-              {featured.image ? (
+              {featured.images?.[0] ? (
                 <img
-                  src={featured.image}
+                  src={featured.images[0]}
                   alt={featured.title}
                   className="w-full object-cover aspect-[16/10] md:h-full md:aspect-auto"
                 />
