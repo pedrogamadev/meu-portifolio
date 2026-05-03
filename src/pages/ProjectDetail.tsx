@@ -279,11 +279,11 @@ export function ProjectDetail() {
                               rel="noopener noreferrer"
                               className="group inline-flex"
                             >
-                              <div className="bg-[#EBE7E0] border border-border/60 hover:border-primary/50 transition-colors rounded-xl py-2 px-5 inline-flex items-center justify-center shadow-sm">
+                              <div className="bg-[#EBE7E0] border border-border/60 hover:border-primary/50 transition-colors rounded-xl py-1 md:py-2 px-5 inline-flex items-center justify-center shadow-sm">
                                 <img 
                                   src={logoCatalogo} 
                                   alt="Logo Catálogo Fácil" 
-                                  className="h-16 md:h-20 object-contain opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all"
+                                  className="h-10 md:h-12 scale-[1.3] md:scale-[1.5] object-contain opacity-95 group-hover:opacity-100 group-hover:scale-[1.4] md:group-hover:scale-[1.6] transition-all"
                                 />
                               </div>
                             </a>
