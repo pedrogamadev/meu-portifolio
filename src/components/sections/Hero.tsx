@@ -12,7 +12,7 @@ export function Hero() {
           
           {/* Coluna de Texto */}
           <div className="max-w-3xl space-y-12 relative z-10">
-            <div className="space-y-8">
+            <div id="hero-identity" className="space-y-8">
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -22,6 +22,7 @@ export function Hero() {
               </motion.div>
 
               <motion.h1
+                id="hero-name"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
