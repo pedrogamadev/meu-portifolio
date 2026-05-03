@@ -7,6 +7,8 @@ import { getProjectImages } from '@/data/projectImages'
 import { useLanguage } from '@/contexts/LanguageContext'
 import type { Project } from '@/data/pt'
 import logoCatalogo from '@/assets/icons/logo-catalogo.png'
+import arabellaLogo from '@/assets/logo-arabella-dev.png'
+import logoCurriculoClaro from '@/assets/icons/curriculo-claro-logo-CB53P-Lz.png'
 
 function ImageCarousel({ images, title }: { images: string[]; title: string }) {
   const [current, setCurrent] = useState(0)
@@ -115,7 +117,6 @@ export function ProjectDetail() {
   }
 
   const images = getProjectImages(project.id)
-  const paragraphs = project.longDescription?.split('\n\n') ?? [project.description]
 
   return (
     <main className="min-h-screen relative">
@@ -268,23 +269,75 @@ export function ProjectDetail() {
                     <>
                       {project.id === 'catalogofacil' ? (
                         <div className="flex flex-col gap-2">
-                          <a
-                            href={project.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="group inline-block"
-                          >
-                            <span className="text-muted-foreground text-[10px] font-mono tracking-widest uppercase mb-2 block">
-                              {language === 'pt' ? 'Clique abaixo pra visitar meu 1° saas' : 'Click below to visit my 1st SaaS'}
-                            </span>
-                            <div className="bg-[#EBE7E0] border border-border/60 hover:border-primary/50 transition-colors rounded-xl py-3 px-6 inline-flex items-center justify-center shadow-sm">
-                              <img 
-                                src={logoCatalogo} 
-                                alt="Logo Catálogo Fácil" 
-                                className="h-10 object-contain opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all"
+                          <span className="text-muted-foreground text-[10px] font-mono tracking-widest uppercase mb-2 block">
+                            {language === 'pt' ? 'Clique abaixo pra visitar meu 1° saas' : 'Click below to visit my 1st SaaS'}
+                          </span>
+                          <div className="flex items-center gap-4">
+                            <a
+                              href={project.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="group inline-flex"
+                            >
+                              <div className="bg-[#EBE7E0] border border-border/60 hover:border-primary/50 transition-colors rounded-xl py-2 px-5 inline-flex items-center justify-center shadow-sm">
+                                <img 
+                                  src={logoCatalogo} 
+                                  alt="Logo Catálogo Fácil" 
+                                  className="h-16 md:h-20 object-contain opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all"
+                                />
+                              </div>
+                            </a>
+                            <a
+                              href="https://arabella.dev.br/"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="h-10 flex items-center"
+                              aria-label="Arabella Dev"
+                            >
+                              <img
+                                src={arabellaLogo}
+                                alt="Arabella Dev"
+                                className="h-10 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+                                style={{ filter: 'brightness(0) invert(1)' }}
                               />
-                            </div>
-                          </a>
+                            </a>
+                          </div>
+                        </div>
+                      ) : project.id === 'curriculoclaro' ? (
+                        <div className="flex flex-col gap-2">
+                          <span className="text-muted-foreground text-[10px] font-mono tracking-widest uppercase mb-2 block">
+                            {language === 'pt' ? 'Clique abaixo pra acessar' : 'Click below to access'}
+                          </span>
+                          <div className="flex items-center gap-4">
+                            <a
+                              href={project.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="group inline-flex"
+                            >
+                              <div className="bg-[#EBE7E0] border border-border/60 hover:border-primary/50 transition-colors rounded-xl py-2 px-5 inline-flex items-center justify-center shadow-sm">
+                                <img 
+                                  src={logoCurriculoClaro} 
+                                  alt="Logo Currículo Claro" 
+                                  className="h-16 md:h-20 object-contain opacity-95 group-hover:opacity-100 group-hover:scale-105 transition-all"
+                                />
+                              </div>
+                            </a>
+                            <a
+                              href="https://arabella.dev.br/"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="h-10 flex items-center"
+                              aria-label="Arabella Dev"
+                            >
+                              <img
+                                src={arabellaLogo}
+                                alt="Arabella Dev"
+                                className="h-10 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity duration-300"
+                                style={{ filter: 'brightness(0) invert(1)' }}
+                              />
+                            </a>
+                          </div>
                         </div>
                       ) : (
                         <a
@@ -303,15 +356,29 @@ export function ProjectDetail() {
                     </>
                   )}
                   {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors group"
-                    >
-                      <Github size={13} />
-                      GitHub
-                    </a>
+                    <>
+                      {project.id === 'curriculoclaro' ? (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 text-sm font-semibold text-[#1B1713] bg-[#D95334] hover:brightness-110 px-4 py-2.5 rounded-xl transition-all group w-fit shadow-sm"
+                        >
+                          <Github size={16} className="text-[#1B1713]" />
+                          GitHub
+                        </a>
+                      ) : (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 text-sm font-semibold text-foreground hover:text-primary transition-colors group"
+                        >
+                          <Github size={13} />
+                          GitHub
+                        </a>
+                      )}
+                    </>
                   )}
                 </div>
               </div>

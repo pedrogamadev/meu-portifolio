@@ -111,6 +111,23 @@ export const projects: Project[] = [
     }
   },
   {
+    id: "norteia",
+    title: "NorteIa",
+    context: "SaaS comercial com IA",
+    description: "SaaS de gestão comercial multi-tenant focado no ciclo Lead → Proposta → Cliente → Projeto, com geração de propostas por IA.",
+    longDescription: "NorteIa é um SaaS de gestão comercial multi-tenant para freelancers e microagências, em desenvolvimento ativo. O nome vem do verbo nortear: a proposta não é guardar dados — é orientar o profissional sobre o que precisa ser feito agora.\n\nO ciclo previsto vai do primeiro lead ao recibo final: captura de leads, geração de proposta com apoio de IA a partir do briefing bruto, aceite digital pelo cliente, kanban do projeto e dashboard financeiro com emissão de Recibo de Pagamento em PDF (sem NF-e e sem gateway no MVP — decisão consciente, registrada no escopo).\n\nO diferencial que está sendo construído em torno disso é a **Inbox de Ações**: uma fila priorizada que diz \"cobre essa parcela atrasada\", \"responde essa proposta visualizada\", \"libera esse projeto travado por sinal\" — com mensagem pronta para disparar no WhatsApp do cliente em um clique.\n\nA arquitetura é multi-tenant com isolamento por workspace (Personal e Studio), e o modelo de dados foi desenhado com LGPD desde o início — consentimento versionado, direito de exportação e anonimização do titular.",
+    status: "EM DESENVOLVIMENTO · MVP em construção",
+    tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Gemini 2.0", "LGPD"],
+    color: "from-violet-500/20 to-purple-900/40",
+    audience: "Freelancers, designers, devs e microagências que hoje gerenciam o comercial em planilha, WhatsApp e cabeça — e que por isso perdem proposta no meio do caminho, esquecem follow-up e refazem orçamento do zero a cada lead.",
+    viableFor: "Profissionais autônomos e times de 1 a 10 pessoas que precisam de uma ferramenta enxuta para conduzir o ciclo comercial — sem pagar pelo excesso de HubSpot ou Pipedrive, e sem a fricção de costurar Notion + Bonsai + Trello + planilha na mão.",
+    acknowledgments: {
+      name: "Freitas",
+      github: "Freitas024",
+      text: "Um agradecimento especial ao meu amigo @Freitas024, que está desenvolvendo esse sistema junto comigo. Tem sido uma parceria muito boa para dividir códigos e ideias na construção desse produto!"
+    }
+  },
+  {
     id: "curriculoclaro",
     title: "Currículo Claro",
     context: "Gerador de currículos",
@@ -135,19 +152,6 @@ export const projects: Project[] = [
     color: "from-amber-500/20 to-orange-900/40",
     audience: "Gestores e líderes técnicos que precisam acompanhar o andamento de projetos e equipes sem depender de ferramentas caras ou complexas.",
     viableFor: "Pequenas equipes de desenvolvimento, agências digitais e empresas que gerenciam projetos internos e querem uma visão centralizada do status de cada entrega."
-  },
-  {
-    id: "norteia",
-    title: "NorteIA",
-    context: "SaaS comercial com IA",
-    description: "SaaS multi-tenant de gestão comercial focado no ciclo Lead → Proposta → Cliente → Projeto, com geração de propostas por IA e base orientada à LGPD.",
-    longDescription: "O NorteIA é um SaaS de gestão comercial multi-tenant pensado para o fluxo real de trabalho de freelancers e pequenas agências: do primeiro contato com um lead até a conclusão do projeto.\n\nA plataforma cobre o ciclo completo — captura de leads, elaboração de propostas com apoio de IA para geração de texto, gestão de clientes e acompanhamento de projetos. Toda a base de dados foi estruturada com conformidade à LGPD, garantindo que dados de clientes sejam tratados de forma segura e transparente.\n\nA arquitetura multi-tenant isola completamente o ambiente de cada usuário, sem interferência entre contas.",
-    subtitle: "Para freelancers, profissionais liberais e microagências.",
-    status: "Em desenvolvimento",
-    tags: ["SaaS", "Multi-tenant", "IA", "LGPD"],
-    color: "from-violet-500/20 to-purple-900/40",
-    audience: "Freelancers, designers, desenvolvedores e microagências que hoje gerenciam seu comercial em planilhas, WhatsApp ou ferramentas genéricas e perdem o controle sobre o ciclo de vendas.",
-    viableFor: "Profissionais autônomos ou pequenas agências (1–10 pessoas) que precisam de uma ferramenta enxuta para gerenciar leads, propostas e projetos — sem pagar pelo excesso de funcionalidades de plataformas como HubSpot ou Pipedrive."
   }
 ]
 

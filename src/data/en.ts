@@ -92,6 +92,23 @@ export const projects: Project[] = [
     }
   },
   {
+    id: "norteia",
+    title: "NorteIa",
+    context: "Commercial SaaS with AI",
+    description: "Multi-tenant commercial management SaaS focused on the Lead → Proposal → Client → Project cycle, with AI-generated proposals.",
+    longDescription: "NorteIa is a multi-tenant commercial management SaaS for freelancers and micro-agencies, in active development. The name comes from the verb \"nortear\" (to guide): the goal is not to store data — it's to guide the professional on what needs to be done right now.\n\nThe planned cycle goes from the first lead to the final receipt: lead capture, AI-assisted proposal generation from raw briefings, digital acceptance by the client, project kanban, and financial dashboard with PDF Receipt issuance (no invoice and no gateway in the MVP — a conscious decision recorded in the scope).\n\nThe differentiator being built around this is the **Action Inbox**: a prioritized queue that says \"collect this overdue installment\", \"reply to this viewed proposal\", \"release this project blocked by down payment\" — with a ready-to-send message to shoot to the client's WhatsApp in one click.\n\nThe architecture is multi-tenant with workspace isolation (Personal and Studio), and the data model was designed with GDPR (LGPD) in mind from the start — versioned consent, right to export, and data subject anonymization.",
+    status: "IN DEVELOPMENT · MVP under construction",
+    tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Gemini 2.0", "LGPD"],
+    color: "from-violet-500/20 to-purple-900/40",
+    audience: "Freelancers, designers, devs, and micro-agencies who currently manage sales via spreadsheets, WhatsApp, and memory — and therefore lose track of proposals, forget follow-ups, and redo budgets from scratch for each lead.",
+    viableFor: "Solo professionals and teams of 1 to 10 people who need a lean tool to run the commercial cycle — without paying for the excess of HubSpot or Pipedrive, and without the friction of stitching Notion + Bonsai + Trello + spreadsheets by hand.",
+    acknowledgments: {
+      name: "Freitas",
+      github: "Freitas024",
+      text: "A special thanks to my friend @Freitas024, who is developing this system alongside me. It's been a great partnership sharing code and ideas in building this product!"
+    }
+  },
+  {
     id: "curriculoclaro",
     title: "Currículo Claro",
     context: "Resume Generator",
@@ -116,19 +133,6 @@ export const projects: Project[] = [
     color: "from-amber-500/20 to-orange-900/40",
     audience: "Managers and tech leads who need to track project and team progress without relying on expensive or complex tools.",
     viableFor: "Small dev teams, digital agencies, and companies managing internal projects who want a centralized view of the status of each delivery."
-  },
-  {
-    id: "norteia",
-    title: "NorteIA",
-    context: "Commercial SaaS with AI",
-    description: "Multi-tenant commercial management SaaS focused on the Lead → Proposal → Client → Project cycle, with AI-generated proposals and LGPD-oriented foundation.",
-    longDescription: "NorteIA is a multi-tenant commercial management SaaS designed around the real workflow of freelancers and small agencies: from first contact with a lead to project completion.\n\nThe platform covers the full cycle — lead capture, proposal creation (with AI-assisted text generation), client management, and project tracking. The entire database was structured for LGPD compliance, ensuring client data is handled securely and transparently.\n\nThe multi-tenant architecture fully isolates each user's environment, with no interference between accounts.",
-    subtitle: "For freelancers, liberal professionals, and micro-agencies.",
-    status: "In development",
-    tags: ["SaaS", "Multi-tenant", "AI", "LGPD"],
-    color: "from-violet-500/20 to-purple-900/40",
-    audience: "Freelancers, designers, developers, and micro-agencies currently managing their sales pipeline in spreadsheets, WhatsApp, or generic tools and losing track of the deal cycle.",
-    viableFor: "Solo professionals or small agencies (1–10 people) who need a lean, integrated tool to manage leads, proposals, and projects — without paying for the excess features of platforms like HubSpot or Pipedrive."
   }
 ]
 

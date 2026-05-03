@@ -68,9 +68,6 @@ export function CustomCursor() {
         }}
       >
         <div className="w-full h-full bg-[#F2E8D5] rounded-full flex items-center justify-center transition-all duration-300">
-          <span className={`text-[12px] text-background font-serif italic whitespace-nowrap transition-opacity duration-300 ${isHovering ? 'opacity-100' : 'opacity-0'}`}>
-            ver
-          </span>
         </div>
       </motion.div>
     </>
