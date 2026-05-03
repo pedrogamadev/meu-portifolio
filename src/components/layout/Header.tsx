@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import { useLocation } from 'react-router-dom'
 import { useLanguage } from '../../contexts/LanguageContext'
 
 export function Header() {
@@ -8,8 +9,11 @@ export function Header() {
   const [heroVisible, setHeroVisible] = useState(true)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const { language, toggleLanguage, t } = useLanguage()
+  const location = useLocation()
+  const isHomePage = location.pathname === '/'
 
   useEffect(() => {
+    if (!isHomePage) return
     const handleScroll = () => {
       const scrollY = window.scrollY
       setIsScrolled(scrollY > 20)
@@ -17,9 +21,10 @@ export function Header() {
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [isHomePage])
 
-  const showIdentity = isScrolled && !heroVisible
+  const headerVisible = !isHomePage || isScrolled
+  const showIdentity = !isHomePage || (isScrolled && !heroVisible)
 
   const navLinks = [
     { name: t('nav.about'), href: '/#about' },
@@ -32,11 +37,11 @@ export function Header() {
     <motion.header
       initial={{ opacity: 0, y: -20 }}
       animate={{
-        opacity: isScrolled ? 1 : 0,
-        y: isScrolled ? 0 : -20,
+        opacity: headerVisible ? 1 : 0,
+        y: headerVisible ? 0 : -20,
       }}
       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-      style={{ pointerEvents: isScrolled ? 'auto' : 'none' }}
+      style={{ pointerEvents: headerVisible ? 'auto' : 'none' }}
       className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-sm border-b border-border/50 py-4"
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
