@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { portfolioData } from '@/data'
 import type { Experience, ExperienceType } from '@/data/pt'
 import { Section } from '../layout/Section'
-import { ArrowUpRight, Briefcase, Calendar, Code2, Store, Users } from 'lucide-react'
+import { Briefcase, Calendar, Code2, Store, Users } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
 
 const typeDetails: Record<ExperienceType, {
@@ -50,6 +50,7 @@ const stats = {
 function ExperienceCard({ exp, index, language }: { exp: Experience; index: number; language: 'pt' | 'en' }) {
   const details = typeDetails[exp.type]
   const Icon = details.icon
+  const chapter = String(index + 1).padStart(2, '0')
 
   return (
     <motion.article
@@ -57,54 +58,64 @@ function ExperienceCard({ exp, index, language }: { exp: Experience; index: numb
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ delay: index * 0.07, duration: 0.35 }}
-      className="group border border-border bg-card/40 p-5 md:p-6 transition-colors duration-300 hover:border-primary/25 hover:bg-white/[0.02]"
+      className={`group relative overflow-hidden border border-border bg-card/35 transition-colors duration-300 hover:border-primary/25 hover:bg-white/[0.02] ${
+        details.current ? 'border-l-primary/70' : ''
+      }`}
     >
-      <div className="flex items-start justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-border bg-background text-muted-foreground transition-colors duration-300 group-hover:border-primary/35 group-hover:text-primary">
-            <Icon size={18} />
-          </div>
-          <div className="min-w-0">
-            <div className="flex flex-wrap items-center gap-2">
-              <span
-                className={`border px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-widest ${
-                  details.current
-                    ? 'border-primary/35 bg-primary/10 text-primary'
-                    : 'border-border text-muted-foreground'
-                }`}
-              >
-                {details.label[language]}
-              </span>
-              <span className="inline-flex items-center gap-1.5 font-mono text-[10px] text-muted-foreground">
-                <Calendar size={11} />
-                {exp.period}
-              </span>
+      <span className="pointer-events-none absolute -right-3 -top-7 font-mono text-[6rem] font-bold leading-none text-white/[0.025] transition-colors duration-300 group-hover:text-primary/[0.055] md:text-[7rem]">
+        {chapter}
+      </span>
+
+      <div className="relative grid gap-5 p-5 md:grid-cols-[minmax(0,1fr)_180px] md:p-6">
+        <div className="min-w-0 space-y-4">
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="mr-1 flex h-9 w-9 shrink-0 items-center justify-center border border-border bg-background text-muted-foreground transition-colors duration-300 group-hover:border-primary/35 group-hover:text-primary">
+              <Icon size={16} />
             </div>
+            <span
+              className={`border px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-widest ${
+                details.current
+                  ? 'border-primary/35 bg-primary/10 text-primary'
+                  : 'border-border text-muted-foreground'
+              }`}
+            >
+              {details.label[language]}
+            </span>
+            <span className="inline-flex items-center gap-1.5 font-mono text-[10px] text-muted-foreground">
+              <Calendar size={11} />
+              {exp.period}
+            </span>
+          </div>
+
+          <div className="space-y-3">
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-widest text-primary/80">
+                {language === 'pt' ? 'Capítulo' : 'Chapter'} {chapter}
+              </p>
+              <h4 className="mt-2 text-2xl font-bold leading-tight tracking-tight transition-colors duration-300 group-hover:text-primary">
+                {exp.role}
+              </h4>
+              <p className="mt-1 max-w-xl text-sm font-semibold leading-snug text-muted-foreground">
+                {exp.company}
+              </p>
+            </div>
+
+            <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-[15px]">
+              {exp.description}
+            </p>
           </div>
         </div>
 
-        <ArrowUpRight
-          size={16}
-          className="mt-1 shrink-0 text-muted-foreground/50 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
-        />
-      </div>
-
-      <div className="mt-5 space-y-3">
-        <div>
-          <p className="font-mono text-[10px] uppercase tracking-widest text-primary/80">
-            {details.focus[language]}
-          </p>
-          <h4 className="mt-2 text-2xl font-bold leading-tight tracking-tight transition-colors duration-300 group-hover:text-primary">
-            {exp.role}
-          </h4>
-          <p className="mt-1 text-sm font-semibold text-muted-foreground">
-            {exp.company}
-          </p>
+        <div className="flex border-t border-border pt-4 md:flex-col md:border-l md:border-t-0 md:pl-5 md:pt-0">
+          <div className="space-y-3">
+            <p className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground">
+              {language === 'pt' ? 'Foco' : 'Focus'}
+            </p>
+            <p className="max-w-[12rem] text-sm font-semibold leading-snug text-foreground/90">
+              {details.focus[language]}
+            </p>
+          </div>
         </div>
-
-        <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
-          {exp.description}
-        </p>
       </div>
     </motion.article>
   )
