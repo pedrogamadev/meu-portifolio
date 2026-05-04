@@ -171,7 +171,7 @@ export const experience: Experience[] = [
     id: 1,
     type: "current",
     role: "Desenvolvedor Full Stack Estagiário",
-    company: "SEEC",
+    company: "Secretaria de Estado da Educação, do Esporte e do Lazer do Rio Grande do Norte",
     period: "Set/2025 — Atual",
     description: "Atuação no desenvolvimento e manutenção de sistemas web internos. Trabalho diariamente com construção de interfaces, integração e estruturação de APIs, modelagem de banco de dados e criação de dashboards, garantindo correções e melhorias contínuas nas demandas da secretaria."
   },

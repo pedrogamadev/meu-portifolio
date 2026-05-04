@@ -141,7 +141,7 @@ export const experience: Experience[] = [
     id: 1,
     type: "current",
     role: "Full Stack Developer Intern",
-    company: "SEEC",
+    company: "State Secretariat of Education, Sport and Leisure of Rio Grande do Norte",
     period: "Sep/2025 — Present",
     description: "Working on the development and maintenance of internal web systems. Daily work involves building interfaces, integrating and structuring APIs, database modeling, and creating dashboards, ensuring continuous fixes and improvements for department demands."
   },
