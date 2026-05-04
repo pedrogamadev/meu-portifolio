@@ -4,6 +4,7 @@ import type { Experience, ExperienceType } from '@/data/pt'
 import { Section } from '../layout/Section'
 import { Briefcase, Calendar, Code2, Store, Users } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
+import arabellaLogo from '@/assets/logo-arabella-dev.png'
 
 const typeDetails: Record<ExperienceType, {
   icon: typeof Code2
@@ -100,6 +101,14 @@ function ExperienceCard({ exp, index, language }: { exp: Experience; index: numb
               <Calendar size={11} />
               {exp.period}
             </span>
+            {exp.type === 'parallel' && (
+              <img
+                src={arabellaLogo}
+                alt="Arabella Dev"
+                className="ml-auto h-8 w-auto max-w-[150px] object-contain opacity-65 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+                loading="lazy"
+              />
+            )}
           </div>
 
           <div className="space-y-3">
