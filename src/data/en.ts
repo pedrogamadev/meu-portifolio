@@ -148,10 +148,10 @@ export const experience: Experience[] = [
   {
     id: 2,
     type: "parallel",
-    role: "Freelance Web Developer",
-    company: "Independent",
+    role: "Independent Full Stack Developer",
+    company: "Arabella.dev — Web projects and custom systems",
     period: "2025 — Present",
-    description: "Creating landing pages, portfolios, web systems, and custom solutions on demand for clients. Focus on architecting the project from scratch to deploy, delivering organized code and functional interfaces."
+    description: "Development of landing pages, portfolios, administrative systems, and web solutions for real clients. Work across the full project cycle: understanding the need, building the interface, integrating with backend, database, deploy, and maintenance. Practical experience that strengthens my ability to turn business problems into functional, well-structured digital products ready for use."
   },
   {
     id: 3,

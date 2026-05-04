@@ -37,6 +37,20 @@ const typeDetails: Record<ExperienceType, {
     icon: Briefcase,
     label: { pt: 'Independente', en: 'Independent' },
     focus: { pt: 'Projetos do zero ao deploy', en: 'Projects from scratch to deploy' },
+    topics: {
+      pt: [
+        'Desenvolvimento de interfaces modernas com foco em conversão e clareza.',
+        'Construção de sistemas web com autenticação, dashboards e CRUDs.',
+        'Integração entre frontend, backend, banco de dados e APIs externas.',
+        'Deploy, ajustes em produção e manutenção contínua dos projetos.',
+      ],
+      en: [
+        'Development of modern interfaces focused on conversion and clarity.',
+        'Building web systems with authentication, dashboards, and CRUD flows.',
+        'Integration between frontend, backend, databases, and external APIs.',
+        'Deploy, production adjustments, and continuous project maintenance.',
+      ],
+    },
   },
   business: {
     icon: Store,
@@ -169,7 +183,7 @@ export function Experience() {
               {language === 'pt' ? 'Experiência' : 'Experience'}
             </p>
             <div className="space-y-3">
-              <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
+              <h2 className="text-4xl font-serif font-bold tracking-tight md:text-5xl">
                 {language === 'pt' ? 'Jornada profissional' : 'Professional journey'}
               </h2>
               <p className="max-w-md text-lg leading-snug text-foreground/90">

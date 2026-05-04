@@ -178,10 +178,10 @@ export const experience: Experience[] = [
   {
     id: 2,
     type: "parallel",
-    role: "Freelancer em Desenvolvimento Web",
-    company: "Atuação Independente",
+    role: "Desenvolvedor Full Stack Independente",
+    company: "Arabella.dev — Projetos web e sistemas sob demanda",
     period: "2025 — Atual",
-    description: "Criação de landing pages, portfólios, sistemas web e soluções customizadas sob demanda para clientes. Foco em arquitetar o projeto do zero ao deploy, entregando código organizado e interfaces funcionais."
+    description: "Desenvolvimento de landing pages, portfólios, sistemas administrativos e soluções web para clientes reais. Atuação em todo o ciclo do projeto: levantamento da necessidade, construção da interface, integração com backend, banco de dados, deploy e manutenção. Experiência prática que reforça minha capacidade de transformar problemas de negócio em produtos digitais funcionais, bem estruturados e prontos para uso."
   },
   {
     id: 3,
