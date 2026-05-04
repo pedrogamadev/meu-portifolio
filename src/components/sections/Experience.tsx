@@ -9,12 +9,27 @@ const typeDetails: Record<ExperienceType, {
   icon: typeof Code2
   label: { pt: string; en: string }
   focus: { pt: string; en: string }
+  topics?: { pt: string[]; en: string[] }
   current?: boolean
 }> = {
   current: {
     icon: Code2,
     label: { pt: 'Atual', en: 'Current' },
     focus: { pt: 'Sistemas internos, APIs e dashboards', en: 'Internal systems, APIs, and dashboards' },
+    topics: {
+      pt: [
+        'Manutenção no sistema SVS do Fundo Estadual de Educação.',
+        'Experiência com API de consulta de extratos do Banco do Brasil.',
+        'Desenvolvimento do sistema de gerenciamento de chamados para suporte técnico.',
+        'Desenvolvimento do FAQ do SigEduc da secretaria.',
+      ],
+      en: [
+        'Maintenance on the SVS system for the State Education Fund.',
+        'Experience with Banco do Brasil statement query API.',
+        'Development of the ticket management system for technical support.',
+        'Development of the department SigEduc FAQ.',
+      ],
+    },
     current: true,
   },
   parallel: {
@@ -66,7 +81,7 @@ function ExperienceCard({ exp, index, language }: { exp: Experience; index: numb
         {chapter}
       </span>
 
-      <div className="relative grid gap-5 p-5 md:grid-cols-[minmax(0,1fr)_180px] md:p-6">
+      <div className="relative grid gap-5 p-5 md:grid-cols-[minmax(0,1fr)_220px] md:p-6">
         <div className="min-w-0 space-y-4">
           <div className="flex flex-wrap items-center gap-2">
             <div className="mr-1 flex h-9 w-9 shrink-0 items-center justify-center border border-border bg-background text-muted-foreground transition-colors duration-300 group-hover:border-primary/35 group-hover:text-primary">
@@ -111,9 +126,19 @@ function ExperienceCard({ exp, index, language }: { exp: Experience; index: numb
             <p className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground">
               {language === 'pt' ? 'Foco' : 'Focus'}
             </p>
-            <p className="max-w-[12rem] text-sm font-semibold leading-snug text-foreground/90">
+            <p className="max-w-[14rem] text-sm font-semibold leading-snug text-foreground/90">
               {details.focus[language]}
             </p>
+            {details.topics && (
+              <ul className="space-y-2 pt-2">
+                {details.topics[language].map((topic) => (
+                  <li key={topic} className="flex gap-2 text-xs leading-relaxed text-muted-foreground">
+                    <span className="mt-2 h-1 w-1 shrink-0 bg-primary/70" />
+                    <span>{topic}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </div>
