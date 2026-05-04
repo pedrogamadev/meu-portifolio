@@ -1,106 +1,168 @@
 import { motion } from 'framer-motion'
 import { portfolioData } from '@/data'
-import type { ExperienceType } from '@/data/pt'
+import type { Experience, ExperienceType } from '@/data/pt'
 import { Section } from '../layout/Section'
-import { Calendar } from 'lucide-react'
+import { ArrowUpRight, Briefcase, Calendar, Code2, Store, Users } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
 
-const typeDetails: Record<ExperienceType, { badge: string; dot: string; dotBorder: string; title: string; label: { pt: string, en: string } }> = {
+const typeDetails: Record<ExperienceType, {
+  icon: typeof Code2
+  label: { pt: string; en: string }
+  focus: { pt: string; en: string }
+  current?: boolean
+}> = {
   current: {
-    badge: "bg-primary/20 text-primary border-primary/30",
-    dot: "bg-primary shadow-sm shadow-primary/50",
-    dotBorder: "border-primary/40 group-hover:border-primary",
-    title: "text-foreground group-hover:text-primary",
-    label: { pt: "ATUAL", en: "CURRENT" }
+    icon: Code2,
+    label: { pt: 'Atual', en: 'Current' },
+    focus: { pt: 'Sistemas internos, APIs e dashboards', en: 'Internal systems, APIs, and dashboards' },
+    current: true,
   },
   parallel: {
-    badge: "bg-blue-500/10 text-blue-400 border-blue-500/20",
-    dot: "bg-blue-400",
-    dotBorder: "border-blue-500/20 group-hover:border-blue-400/50",
-    title: "text-foreground group-hover:text-blue-400",
-    label: { pt: "PARALELO", en: "PARALLEL" }
+    icon: Briefcase,
+    label: { pt: 'Independente', en: 'Independent' },
+    focus: { pt: 'Projetos do zero ao deploy', en: 'Projects from scratch to deploy' },
   },
   business: {
-    badge: "bg-purple-500/10 text-purple-400 border-purple-500/20",
-    dot: "bg-purple-400",
-    dotBorder: "border-purple-500/20 group-hover:border-purple-400/50",
-    title: "text-foreground group-hover:text-purple-400",
-    label: { pt: "NEGÓCIO PRÓPRIO", en: "OWN BUSINESS" }
+    icon: Store,
+    label: { pt: 'Negócio próprio', en: 'Own business' },
+    focus: { pt: 'Operação, vendas e decisão prática', en: 'Operations, sales, and practical decisions' },
   },
   previous: {
-    badge: "bg-white/5 text-muted-foreground border-white/10",
-    dot: "bg-muted-foreground/50",
-    dotBorder: "border-white/10 group-hover:border-white/20",
-    title: "text-muted-foreground group-hover:text-foreground",
-    label: { pt: "ANTERIOR", en: "PREVIOUS" }
-  }
+    icon: Users,
+    label: { pt: 'Base comercial', en: 'Commercial base' },
+    focus: { pt: 'Atendimento e problemas reais', en: 'Customer care and real problems' },
+  },
+}
+
+const stats = {
+  pt: [
+    { value: '4', label: 'frentes de experiência' },
+    { value: '2025', label: 'atuação técnica atual' },
+    { value: 'full stack', label: 'da regra ao deploy' },
+  ],
+  en: [
+    { value: '4', label: 'experience fronts' },
+    { value: '2025', label: 'current technical work' },
+    { value: 'full stack', label: 'from rules to deploy' },
+  ],
+}
+
+function ExperienceCard({ exp, index, language }: { exp: Experience; index: number; language: 'pt' | 'en' }) {
+  const details = typeDetails[exp.type]
+  const Icon = details.icon
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ delay: index * 0.07, duration: 0.35 }}
+      className="group border border-border bg-card/40 p-5 md:p-6 transition-colors duration-300 hover:border-primary/25 hover:bg-white/[0.02]"
+    >
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-border bg-background text-muted-foreground transition-colors duration-300 group-hover:border-primary/35 group-hover:text-primary">
+            <Icon size={18} />
+          </div>
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-2">
+              <span
+                className={`border px-2 py-0.5 font-mono text-[9px] font-semibold uppercase tracking-widest ${
+                  details.current
+                    ? 'border-primary/35 bg-primary/10 text-primary'
+                    : 'border-border text-muted-foreground'
+                }`}
+              >
+                {details.label[language]}
+              </span>
+              <span className="inline-flex items-center gap-1.5 font-mono text-[10px] text-muted-foreground">
+                <Calendar size={11} />
+                {exp.period}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <ArrowUpRight
+          size={16}
+          className="mt-1 shrink-0 text-muted-foreground/50 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-primary"
+        />
+      </div>
+
+      <div className="mt-5 space-y-3">
+        <div>
+          <p className="font-mono text-[10px] uppercase tracking-widest text-primary/80">
+            {details.focus[language]}
+          </p>
+          <h4 className="mt-2 text-2xl font-bold leading-tight tracking-tight transition-colors duration-300 group-hover:text-primary">
+            {exp.role}
+          </h4>
+          <p className="mt-1 text-sm font-semibold text-muted-foreground">
+            {exp.company}
+          </p>
+        </div>
+
+        <p className="text-sm leading-relaxed text-muted-foreground md:text-base">
+          {exp.description}
+        </p>
+      </div>
+    </motion.article>
+  )
 }
 
 export function Experience() {
   const { language } = useLanguage()
   const { experience } = portfolioData[language]
+  const currentStats = stats[language]
 
   return (
     <Section id="experience">
-      <div className="grid md:grid-cols-[1fr_2fr] gap-12 items-start">
-        <div className="space-y-6 md:sticky md:top-24">
-          <h2 className="text-primary font-mono text-sm tracking-widest uppercase">
-            {language === 'pt' ? 'Experiência' : 'Experience'}
-          </h2>
-          <h3 className="text-4xl font-bold tracking-tight">
-            {language === 'pt' ? 'Jornada profissional' : 'Professional journey'}
-          </h3>
-          <p className="text-muted-foreground">
-            {language === 'pt' ? 
-              'Uma trajetória que combina vivência em operação comercial, gestão de negócio próprio, execução de projetos independentes e atuação técnica dedicada ao desenvolvimento de software.' : 
-              'A journey that combines experience in commercial operations, business management, independent projects execution, and technical dedication to software development.'}
-          </p>
+      <div className="grid gap-12 md:grid-cols-[0.9fr_1.6fr] md:items-start">
+        <div className="space-y-8 md:sticky md:top-24">
+          <div className="space-y-4">
+            <p className="font-mono text-xs uppercase tracking-widest text-primary">
+              {language === 'pt' ? 'Experiência' : 'Experience'}
+            </p>
+            <div className="space-y-3">
+              <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
+                {language === 'pt' ? 'Jornada profissional' : 'Professional journey'}
+              </h2>
+              <p className="max-w-md text-lg leading-snug text-foreground/90">
+                {language === 'pt'
+                  ? 'Da operação real ao desenvolvimento de produtos digitais'
+                  : 'From real operations to digital product development'}
+              </p>
+            </div>
+            <p className="max-w-md text-sm leading-relaxed text-muted-foreground md:text-base">
+              {language === 'pt'
+                ? 'Minha trajetória combina atendimento, negócio próprio, projetos independentes e desenvolvimento full stack. Essa mistura me ajuda a construir soluções que não são só técnicas, mas também úteis, claras e conectadas com problemas reais.'
+                : 'My journey combines customer service, running a business, independent projects, and full-stack development. This mix helps me build solutions that are not only technical, but also useful, clear, and connected to real problems.'}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-3 border border-border bg-card/30">
+            {currentStats.map((stat) => (
+              <div key={stat.label} className="border-r border-border p-3 last:border-r-0 md:p-4">
+                <p className="font-mono text-xs uppercase tracking-widest text-primary">
+                  {stat.value}
+                </p>
+                <p className="mt-2 text-[11px] leading-snug text-muted-foreground md:text-xs">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="relative space-y-10 before:absolute before:left-[17px] before:top-2 before:bottom-2 before:w-[2px] before:bg-white/5 pl-4 md:pl-0">
-          {experience.map((exp, i) => {
-            const styles = typeDetails[exp.type]
-
-            return (
-              <motion.div
-                key={exp.id}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="relative pl-10 md:pl-12 group cursor-default"
-              >
-                <div className={`absolute left-0 top-1.5 w-9 h-9 rounded-full bg-background border-2 flex items-center justify-center z-10 transition-colors duration-300 ${styles.dotBorder}`}>
-                  <div className={`w-2 h-2 rounded-full transition-transform duration-300 group-hover:scale-125 ${styles.dot}`} />
-                </div>
-
-                <div className="space-y-3 p-5 -ml-4 md:-ml-5 rounded-2xl transition-colors duration-300 hover:bg-white/[0.02] border border-transparent hover:border-white/5">
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span className={`inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border ${styles.badge}`}>
-                      {styles.label[language]}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground font-medium">
-                      <Calendar size={12} />
-                      {exp.period}
-                    </span>
-                  </div>
-                  
-                  <div>
-                    <h4 className={`text-xl font-bold transition-colors duration-300 ${styles.title}`}>
-                      {exp.role}
-                    </h4>
-                    <span className="text-sm font-semibold text-muted-foreground mt-1 block">
-                      {exp.company}
-                    </span>
-                  </div>
-                  
-                  <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-                    {exp.description}
-                  </p>
-                </div>
-              </motion.div>
-            )
-          })}
+        <div className="space-y-3">
+          {experience.map((exp, index) => (
+            <ExperienceCard
+              key={exp.id}
+              exp={exp}
+              index={index}
+              language={language}
+            />
+          ))}
         </div>
       </div>
     </Section>
