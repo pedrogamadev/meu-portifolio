@@ -20,8 +20,8 @@ export function ProductMindset() {
         </h3>
         <p className="text-muted-foreground max-w-2xl mx-auto">
           {language === 'pt' ? 
-            'Mais do que entregar código, gosto de construir soluções bem cuidadas, que sejam agradáveis de usar e tranquilas de evoluir.' : 
-            'More than just delivering code, I like to build well-crafted solutions that are pleasant to use and easy to evolve.'}
+            'Princípios que aprendi construindo produtos reais — do primeiro commit ao deploy em produção.' : 
+            'Principles I learned building real products — from the first commit to production deploy.'}
         </p>
       </div>
 

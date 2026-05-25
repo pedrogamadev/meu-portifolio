@@ -8,7 +8,6 @@ import { About } from './components/sections/About'
 import { Stack } from './components/sections/Stack'
 import { Projects } from './components/sections/Projects'
 import { Experience } from './components/sections/Experience'
-import { ProductMindset } from './components/sections/ProductMindset'
 import { Contact } from './components/sections/Contact'
 import { ProjectDetail } from './pages/ProjectDetail'
 import { LanguageProvider } from './contexts/LanguageContext'
@@ -38,7 +37,6 @@ function HomePage() {
       <Stack />
       <Projects />
       <Experience />
-      <ProductMindset />
       <Contact />
     </main>
   )

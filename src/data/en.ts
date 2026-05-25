@@ -1,4 +1,4 @@
-import { Globe, LayoutTemplate, MonitorSmartphone, Zap, Layers, Container } from 'lucide-react'
+import { Globe, LayoutTemplate, Zap, Layers, Blocks, Workflow, Scale } from 'lucide-react'
 import type { Experience, Project } from './pt'
 
 export const personalInfo = {
@@ -173,18 +173,18 @@ export const experience: Experience[] = [
 
 export const productMindset = [
   {
-    title: "Code Organization",
-    description: "I like to build projects with clear structure, separation of concerns, and code that remains easy to maintain over time.",
-    icon: Container
+    title: "Architecture built to scale",
+    description: "I design with multi-tenancy, data isolation, and domain modules from the first commit — because restructuring later is expensive.",
+    icon: Blocks
   },
   {
-    title: "User Experience",
-    description: "I pay close attention to navigation, interface readability, and the details that make the experience simpler for the user.",
-    icon: MonitorSmartphone
+    title: "From briefing to deploy",
+    description: "I like to understand the business problem before opening the editor. I gather requirements, model the database, build the API, craft the interface, and deploy — each step informing the next.",
+    icon: Workflow
   },
   {
-    title: "Constant Evolution",
-    description: "I value learning with each project, reviewing technical choices, and evolving both in code writing and problem-solving.",
-    icon: Zap
+    title: "Pragmatism > perfection",
+    description: "I pick the right solution for the moment: skipping invoicing in NorteIa\u2019s MVP was a conscious decision, documented in scope. I’d rather ship something usable than keep polishing something no one has seen.",
+    icon: Scale
   }
 ]

@@ -1,4 +1,4 @@
-import { Globe, LayoutTemplate, MonitorSmartphone, Zap, Layers, Container } from 'lucide-react'
+import { Globe, LayoutTemplate, Zap, Layers, Blocks, Workflow, Scale } from 'lucide-react'
 export interface Project {
   id: string
   title: string
@@ -203,18 +203,18 @@ export const experience: Experience[] = [
 
 export const productMindset = [
   {
-    title: "Organização do Código",
-    description: "Gosto de construir projetos com estrutura clara, separação de responsabilidades e código que continue fácil de manter com o tempo.",
-    icon: Container
+    title: "Arquitetura pensada pra escalar",
+    description: "Eu projeto com multi-tenant, isolamento de dados e módulos de domínio desde o primeiro commit — porque reestruturar depois custa caro.",
+    icon: Blocks
   },
   {
-    title: "Experiência de Uso",
-    description: "Dou bastante atenção à navegação, legibilidade da interface e aos detalhes que deixam a experiência mais simples para quem usa.",
-    icon: MonitorSmartphone
+    title: "Do briefing ao deploy",
+    description: "Gosto de entender o problema do negócio antes de abrir o editor. Levanto necessidade, modelo banco, construo API, monto interface e faço deploy — cada etapa informando a próxima.",
+    icon: Workflow
   },
   {
-    title: "Evolução Constante",
-    description: "Valorizo aprender com cada projeto, revisar escolhas técnicas e evoluir tanto na escrita de código quanto na forma de resolver problemas.",
-    icon: Zap
+    title: "Pragmatismo > perfeição",
+    description: "Escolho a solução certa pro momento: sem NF-e no MVP do NorteIa foi decisão consciente, registrada no escopo. Prefiro entregar algo usável do que ficar polindo algo que ninguém viu.",
+    icon: Scale
   }
 ]
