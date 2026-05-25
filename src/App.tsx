@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { Header } from './components/layout/Header'
 import { Footer } from './components/layout/Footer'
 import { CustomCursor } from './components/layout/CustomCursor'
+import { FloatingWhatsApp } from './components/layout/FloatingWhatsApp'
 import { Hero } from './components/sections/Hero'
 import { About } from './components/sections/About'
 import { Stack } from './components/sections/Stack'
@@ -54,6 +55,7 @@ function App() {
             <Route path="/projeto/:id" element={<ProjectDetail />} />
           </Routes>
           <Footer />
+          <FloatingWhatsApp />
         </div>
       </LanguageProvider>
     </BrowserRouter>
