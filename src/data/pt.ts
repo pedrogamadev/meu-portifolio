@@ -73,37 +73,31 @@ export const projects: Project[] = [
   {
     id: "catalogofacil",
     title: "Catálogo Fácil",
-    context: "SaaS de catálogo B2B",
-    description: "SaaS de catálogo B2B para cadastrar produtos, personalizar a vitrine e facilitar pedidos via catálogo digital com foco em uso simples e rápido.",
-    longDescription: `O Catálogo Fácil é um SaaS B2B multi-tenant para digitalização de catálogos, com foco em pequenos e médios negócios que vendem para outras empresas. A solução foi projetada para separar claramente a operação de cada loja (tenant), garantindo isolamento de dados, escalabilidade e gestão centralizada.
+    context: "Catálogos digitais para comércios locais",
+    description: "Plataforma multiempresa para criar catálogos públicos por link e QR Code, com delivery que organiza a escolha e abre uma conversa no WhatsApp.",
+    longDescription: `Catálogo Fácil é uma plataforma para comércios criarem vitrines digitais próprias, divulgadas por link e QR Code, sem depender de marketplace para apresentar produtos, preços e identidade visual.
 
-## Stack e arquitetura
-- Frontend: React + TypeScript, com interface administrativa para gestão de catálogo, tema, equipe e configurações.
-- Backend: Node.js com Prisma ORM, organizado por módulos de domínio (catálogo, delivery, usuários, billing e administração).
-- Banco de dados: PostgreSQL, com modelagem voltada para multi-tenant e relacionamento entre lojas, itens, categorias, assinaturas e transações.
-- Entrega: arquitetura orientada a APIs REST, com autenticação, controle de permissões e integração entre painéis admin/master e catálogo público.
+## Como funciona
 
-## Funcionalidades principais
-- Gestão completa de catálogo (categorias, itens, disponibilidade, personalização visual e QR Code de acesso).
-- Modo catálogo e modo delivery com carrinho e envio de pedido via WhatsApp.
-- Área administrativa com indicadores operacionais e configuração de regras da loja.
-- Gestão de assinatura com histórico de cobranças e acompanhamento de status no painel.
+Cada loja publica um catálogo organizado por categorias, itens, fotos, preços, variações, disponibilidade e busca. Quando o delivery está habilitado, o cliente monta a sacola, informa os dados necessários e escolhe entrega ou retirada. A finalização gera uma mensagem estruturada e abre o WhatsApp da loja.
 
-## Pagamentos e billing
-- Integração de cobrança recorrente com **API Karvix PAY** para pagamentos via **PIX**.
-- Fluxo de assinatura com estados de teste, cobrança pendente, ativo e renovação.
-- Registro de transações para auditoria, rastreabilidade e suporte operacional.
+## Operação do lojista
 
-## Diferenciais técnicos
-- Estrutura preparada para escala SaaS (multi-tenant com isolamento por cliente).
-- Regras de negócio centralizadas no backend para consistência entre painéis e catálogo público.
-- Foco em usabilidade: operação simples para o lojista e configuração rápida de catálogo digital.`,
+O painel permite administrar catálogo, categorias, itens, variações, disponibilidade, visibilidade por vitrine, sugestões, lixeira, identidade visual, links, QR Code, formas de pagamento informativas, equipe, convites, métricas de vitrine, assinatura e histórico de alterações.
+
+## Arquitetura e engenharia
+
+O projeto usa React, TypeScript e Vite no frontend; Node.js, Express, Prisma e PostgreSQL no backend. A modelagem isola cada loja por relações e autorização contextual, com papéis de proprietário, gerente e administração global. Há integrações para armazenamento de imagens, cobrança de assinatura e e-mails transacionais.
+
+## Limites e semântica importante
+
+O carrinho não vira um pedido salvo no Catálogo Fácil. Ele permanece no navegador e, ao finalizar, abre uma conversa no WhatsApp com a mensagem pronta. A loja confirma disponibilidade, valor final, prazo, entrega e pagamento diretamente com o cliente; as métricas representam navegação e intenção, não vendas confirmadas.`,
     status: "Em produção",
-    tags: ["React", "TypeScript", "Node.js", "Prisma", "PostgreSQL"],
+    tags: ["React", "TypeScript", "Node.js", "Express", "Prisma", "PostgreSQL", "Mercado Pago", "Supabase Storage"],
     color: "from-green-500/20 to-emerald-900/40",
     url: "https://www.catalogofacil.shop/",
-    audience: "Pequenas e médias empresas que trabalham com vendas B2B — distribuidoras, representantes comerciais e atacadistas que precisam de uma forma mais organizada de compartilhar produtos com seus clientes.",
-    viableFor: "Qualquer negócio que venda para outras empresas por catálogo, especialmente quem hoje usa PDF, WhatsApp ou planilhas para enviar listas de produtos. A plataforma é pensada para quem quer evoluir para algo mais profissional sem abrir mão da simplicidade.",
+    audience: "Voltado a pequenos e médios comércios que precisam organizar uma vitrine digital própria, especialmente alimentação, moda, beleza, saúde, casa, automotivo, pet e serviços.",
+    viableFor: "Viável para negócios que usam WhatsApp no atendimento e querem reduzir perguntas repetidas, concentrar catálogo e facilitar a descoberta por link ou QR Code, sem substituir sua confirmação comercial no canal de atendimento.",
     acknowledgments: {
       name: "Flávia Regina",
       github: "flaviamarinho10",
